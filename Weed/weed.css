@@ -1,13 +1,10 @@
+
 .controller.xbox {
     background: url(base.png);
     height: 630px;
     width: 750px;
     /*    margin-left: -375px;
         margin-top: -285px;*/
-}
-
-.xbox.white {
-    background: url(xbox-assets/base-white.svgz);
 }
 
 .xbox.disconnected {
