@@ -47,7 +47,7 @@ opacity: 1!important;}
     width: 170px;
     height: 61px;
     background: url(bumper.png);
-    opacity: 1;
+    opacity: 1!important;
 background-position: 0px -65px;}
 
 .xbox .bumpers {
