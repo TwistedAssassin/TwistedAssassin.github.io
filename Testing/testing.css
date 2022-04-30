@@ -290,3 +290,9 @@ background-position: 86px 3px;}
 .xbox .trigger-button {
     background: url(trigger.png);
 }
+.xbox .trigger-button.left.pressed {
+    background-position: -89px 0;
+}
+.xbox .trigger-button.right.pressed {
+    background-position: -90px 0;
+}
