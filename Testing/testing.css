@@ -18,13 +18,14 @@ html, body {
 .xbox.disconnected div {
     display: none;
 }
-
+.xbox .trigger{display:none;}
 .xbox .triggers {
     width: 444px;
     height: 217px;
     position: absolute;
     left: 156px;
-top: -7px;}
+    top: -7px;
+}
 
 .xbox .trigger {
     width: 88px;
