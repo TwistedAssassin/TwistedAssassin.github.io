@@ -1,4 +1,6 @@
-
+html, body {
+    background: saddlebrown;
+}
 .controller.xbox {
     background: url(base.png);
     height: 630px;
