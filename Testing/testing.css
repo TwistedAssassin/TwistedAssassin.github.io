@@ -190,7 +190,7 @@ background-repeat: no-repeat!important;}
     background: url(stick.png);
     background-position: -85px 0;
     height: 83px;
-    width: 83px;
+    width: 83px;transform: none!important;
 }
 
 .xbox .stick.pressed {
