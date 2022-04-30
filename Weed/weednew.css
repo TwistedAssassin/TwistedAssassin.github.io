@@ -6,11 +6,6 @@
         margin-top: -285px;*/
 }
 
-html, body {
-    background: saddlebrown!important;
-}
-
-
 .xbox.disconnected {
     background: url(xbox-assets/disconnected.svgz);
 }
