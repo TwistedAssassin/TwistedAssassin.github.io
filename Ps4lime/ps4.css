@@ -103,7 +103,7 @@ background-position: 123px 10px;}
 .ds4 .arrows {
     position: absolute;
     width: 343px;
-    height: 46px;
+    height: 48px;
     top: 138px;
     left: 231px;
 }
@@ -111,7 +111,7 @@ background-position: 123px 10px;}
 .ds4 .back, .ds4 .start {
     background: url(start.png);
     width: 28px;
-    height: 46px;
+    height: 49px;
     opacity: 1;
 }
 
@@ -135,7 +135,7 @@ background-position: -29px 0px;}
 .ds4 .abxy {
     position: absolute;
     width: 170px;
-    height: 171px;
+    height: 173px;
     top: 159px;
     left: 567px;
 }
@@ -148,15 +148,15 @@ background-position: -29px 0px;}
 }
 
 .ds4 .button.pressed {
-    background-position-y: 55px;
-    /* margin-top: 5px; */
+    /* top: 1px; */background-position-y: 54px;
+    margin-top: 1px;
 }
 
 .ds4 .a {
     background-position: 0px 0px;
     bottom: 7px;
     left: 61px;
-}
+top: 111px;}
 
 .ds4 .b {
     background-position: -54px 0px;
