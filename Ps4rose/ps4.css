@@ -1,7 +1,7 @@
 /*BEGIN PS4 Controller Styling*/
 .controller.ds4 {
     background: url(base.png);
-    height: 598px;
+    height: 600px;
     width: 806px;
     /*    margin-left: -403px;
         margin-top: -280px;*/
@@ -16,10 +16,11 @@
 }
 
 .ds4 .triggers {
-    width: 588px;
+    top: -12px;
+    width: 578px;
     height: 90px;
     position: absolute;
-    left: 109px;
+    left: 115px;
 }
 
 .ds4 .trigger-button {
@@ -80,11 +81,11 @@ background-position: 123px 10px;}
 }
 
 .ds4 .touchpad {
-    width: 262px;
-    height: 151px;
+    width: 271px;
+    height: 153px;
     position: absolute;
-    left: 272px;
-    top: 122px;
+    left: 268px;
+    top: 116px;
 }
 
 
@@ -261,5 +262,8 @@ transform: none!important;}
 .ds4.half {
     margin-top: -300px;
 }
-
+.ds4 .touchpad.pressed {
+    background: url(touchpad.png) no-repeat center;
+}
+.ds4 .trigger.left,.ds4 .trigger.right{display:none!important}
 /*END PS4 Controller Styling*/
