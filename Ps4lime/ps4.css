@@ -16,10 +16,11 @@
 }
 
 .ds4 .triggers {
-    width: 588px;
+    top: -12px;
+    width: 778px;
     height: 90px;
     position: absolute;
-    left: 109px;
+    left: 14px;
 }
 
 .ds4 .trigger-button {
