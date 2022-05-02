@@ -135,7 +135,7 @@ background-position: -29px 0px;}
 .ds4 .abxy {
     position: absolute;
     width: 170px;
-    height: 171px;
+    height: 173px;
     top: 159px;
     left: 567px;
 }
@@ -148,15 +148,15 @@ background-position: -29px 0px;}
 }
 
 .ds4 .button.pressed {
-    background-position-y: 55px;
-    /* margin-top: 5px; */
+    /* top: 1px; */background-position-y: 54px;
+    margin-top: 1px;
 }
 
 .ds4 .a {
     background-position: 0px 0px;
     bottom: 7px;
     left: 61px;
-}
+top: 111px;}
 
 .ds4 .b {
     background-position: -54px 0px;
