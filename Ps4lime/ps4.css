@@ -81,11 +81,11 @@ background-position: 123px 10px;}
 }
 
 .ds4 .touchpad {
-    width: 262px;
-    height: 151px;
+    width: 271px;
+    height: 153px;
     position: absolute;
-    left: 272px;
-    top: 122px;
+    left: 268px;
+    top: 116px;
 }
 
 
@@ -262,5 +262,7 @@ transform: none!important;}
 .ds4.half {
     margin-top: -300px;
 }
-
+.ds4 .touchpad.pressed {
+    background: url(https://i.ibb.co/xsnBH6n/touchpad.png) no-repeat center;
+}
 /*END PS4 Controller Styling*/
