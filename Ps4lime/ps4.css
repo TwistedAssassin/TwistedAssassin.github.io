@@ -265,4 +265,5 @@ transform: none!important;}
 .ds4 .touchpad.pressed {
     background: url(touchpad.png) no-repeat center;
 }
+.ds4 .trigger.left,.ds4 .trigger.right{display:none!important}
 /*END PS4 Controller Styling*/
