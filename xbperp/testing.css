@@ -18,20 +18,21 @@ html, body {
 .xbox.disconnected div {
     display: none;
 }
-
+.xbox .trigger{display:none!important;}
 .xbox .triggers {
-    width: 446px;
-    height: 121px;
+    width: 444px;
+    height: 217px;
     position: absolute;
-    left: 152px;
+    left: 154px;
+    top: -7px;
 }
 
 .xbox .trigger {
     width: 88px;
     height: 121px;
-    background: url(trigger.png);
-    opacity: 0;
-}
+    /* background: url(trigger.png); */
+    
+opacity: 1!important;}
 
 .xbox .trigger.left {
     float: left;
@@ -47,8 +48,8 @@ html, body {
     width: 170px;
     height: 61px;
     background: url(bumper.png);
-    opacity: 0;
-}
+    opacity: 1!important;
+background-position: 0px -65px;}
 
 .xbox .bumpers {
     position: absolute;
@@ -61,7 +62,8 @@ html, body {
 .xbox .bumper.pressed {
     opacity: 1;
 }
-
+.xbox .bumper.left.pressed{background-position: 0px 1px;}
+.xbox .bumper.right.pressed{background-position: 0px 1px;}
 .xbox .bumper.left {
     float: left;
 margin-left: 1px;}
@@ -114,7 +116,7 @@ margin-left: 1px;}
     background: url(start-select.png);
     width: 33px;
     height: 33px;
-    opacity: 0;
+    opacity: 1;
 }
 
 .xbox .back.pressed, .xbox .start.pressed {
@@ -123,12 +125,12 @@ margin-left: 1px;}
 
 .xbox .back {
     float: left;
-}
+background-position: 0px -36px;}
 
 .xbox .start {
-    background-position: 32px 0px;
+    
     float: right;
-}
+background-position: 32px -36px;}
 
 .xbox .abxy {
     position: absolute;
@@ -186,9 +188,9 @@ background-repeat: no-repeat!important;}
 .xbox .stick {
     position: absolute;
     background: url(stick.png);
-    background-position: -85px 0;
-    height: 83px;
-    width: 83px;
+    background-position: -92px 0;
+    height: 89px;
+    width: 92px;transform: none!important;
 }
 
 .xbox .stick.pressed {
@@ -196,13 +198,13 @@ background-repeat: no-repeat!important;}
 }
 
 .xbox .stick.left {
-    top: 0;
-    left: 0;
+    top: -2px;
+    left: -4px;
 }
 
 .xbox .stick.right {
-    top: 113px;
-    left: 288px;
+    top: 111px;
+    left: 284px;
 }
 
 .xbox .dpad {
@@ -219,41 +221,41 @@ background-repeat: no-repeat!important;}
     opacity: 1;
 }
 
-.xbox .face.up.pressed {background-position: 40px 0!important;}
+.xbox .face.up.pressed {background-position: -42px 0!important;}
 
-.xbox .face.down.pressed {background-position: 83px 0!important;}
-.xbox .face.left.pressed {background-position: -86px -105px!important;}
-.xbox .face.right.pressed {background-position: 86px -62px!important;}
+.xbox .face.down.pressed {background-position: 0px 3px!important;}
+.xbox .face.left.pressed {background-position: -170px -103px!important;}
+.xbox .face.right.pressed {background-position: 0px -58px!important;}
 
 .xbox .face.up {
-    background-position: 128px 0;
-    left: 38px;
-    top: 0px;
-    width: 37px;
+    background-position: 44px 0;
+    left: 34px;
+    top: 1px;
+    width: 44px;
     height: 58px;
 }
 
 .xbox .face.down {
-    left: 38px;
-    bottom: 0;
-    width: 37px;
-    height: 56px;
-background-position: 171px 0;}
+    left: 35px;
+    bottom: -1px;
+    width: 44px;
+    height: 61px;
+background-position: 86px 3px;}
 
 .xbox .face.left {
-    background-position: 2px -105px;
-    width: 55px;
-    height: 35px;
-    top: 38px;
-    left: 0;
+    background-position: 90px -103px;
+    width: 63px;
+    height: 42px;
+    top: 36px;
+    left: -3px;
 }
 
 .xbox .face.right {
-    background-position: 0 -61px;
-    width: 55px;
-    height: 35px;
-    top: 38px;
-    right: 0;
+    background-position: 86px -58px;
+    width: 63px;
+    height: 42px;
+    top: 35px;
+    right: -9px;
 }
 
 .xbox.half {
@@ -263,3 +265,36 @@ background-position: 171px 0;}
 .xbox {
     background: no-repeat center;
 }
+.xbox .triggers {
+    width: 444px;
+    height: 217px;
+    position: absolute;
+    left: 156px;
+    top: -7px;
+}
+.xbox .trigger-button.left {
+    float: left!important;
+    background-position: 0px 0;
+    width: 90px;
+    height: 121px!important;
+    background-repeat: no-repeat;
+}
+.xbox .trigger-button.right {
+    float: right;
+    background-position: 0px 0;
+    width: 90px;
+    height: 121px!important;
+    background-repeat: no-repeat;
+    transform: rotateY(180deg);
+}
+.xbox .trigger-button {
+    background: url(trigger.png);
+}
+.xbox .trigger-button.left.pressed {
+    background-position: -89px 0;
+}
+.xbox .trigger-button.right.pressed {
+    background-position: -90px 0;
+}
+.xbox .back.pressed{background-position: 0px 0;}
+.xbox .start.pressed{background-position: 32px 0px;}
