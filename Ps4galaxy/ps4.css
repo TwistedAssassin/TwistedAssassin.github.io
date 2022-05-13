@@ -50,12 +50,12 @@
     height: 26px;
     background: url(bumper.png) no-repeat;
     
-}
+opacity: 1;background-position: 0px -26px;}
 .ds4 .bumper.left.pressed {
-    background-position: 0px -26px;
+    background-position: 0px 0px;
 }
 .ds4 .bumper.right.pressed {
-    background-position: 0px -26px;
+    background-position: 0px 0px;
 }
 .ds4 .bumpers {
     position: absolute;
@@ -103,7 +103,7 @@ background-position: 123px 10px;}
 .ds4 .arrows {
     position: absolute;
     width: 343px;
-    height: 48px;
+    height: 46px;
     top: 138px;
     left: 231px;
 }
@@ -267,3 +267,4 @@ transform: none!important;}
 }
 .ds4 .trigger.left,.ds4 .trigger.right{display:none!important}
 /*END PS4 Controller Styling*/
+
