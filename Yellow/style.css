@@ -1,0 +1,345 @@
+
+html {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #0aff00;
+    overflow-y: hidden;
+}
+
+/*Container classes and whatnot*/
+.container {
+    width: 668px;
+    margin: 0 auto;
+}
+
+.clear {
+    clear: both;
+    display: block;
+}
+
+/*Now here's where the fun begins...*/
+.controller {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 30px !important;
+    margin-left: 0px !important;
+}
+
+.controller.half {
+    margin-top: 0px !important;
+}
+
+
+/*BEGIN Xbox One Controller Styling*/
+.xbox .back.Blue, .xbox .start.Blue{background: url(images/Blue/start-select.png);}
+.xbox .bumper.Blue {background: url(images/Blue/bumper.png);}
+.xbox .button.Blue {background: url(images/Blue/abxy.png);}
+.xbox .trigger.Blue {background: url(images/Blue/trigger.png);}
+.xbox .stick.Blue {background: url(images/Blue/stick.png);background-position: -85px 0;}
+.xbox .face.Blue{background: url(images/Blue/dpad.png);}
+.controller.xbox.Blue {background: url(images/Blue/base.png);}
+
+.xbox .back.Green, .xbox .start.Green{background: url(images/Green/start-select.png);}
+.xbox .bumper.Green {background: url(images/Green/bumper.png);}
+.xbox .button.Green {background: url(images/Green/abxy.png);}
+.xbox .trigger.Green {background: url(images/Green/trigger.png);}
+.xbox .stick.Green {background: url(images/Green/stick.png);background-position: -85px 0;}
+.xbox .face.Green{background: url(images/Green/dpad.png);}
+.controller.xbox.Green {background: url(images/Green/base.png);}
+
+.xbox .back.Orange, .xbox .start.Orange{background: url(images/Orange/start-select.png);}
+.xbox .bumper.Orange {background: url(images/Orange/bumper.png);}
+.xbox .button.Orange {background: url(images/Orange/abxy.png);}
+.xbox .trigger.Orange {background: url(images/Orange/trigger.png);}
+.xbox .stick.Orange {background: url(images/Orange/stick.png);background-position: -85px 0;}
+.xbox .face.Orange{background: url(images/Orange/dpad.png);}
+.controller.xbox.Orange {background: url(images/Orange/base.png);}
+
+.xbox .back.Pink, .xbox .start.Pink{background: url(images/Pink/start-select.png);}
+.xbox .bumper.Pink {background: url(images/Pink/bumper.png);}
+.xbox .button.Pink {background: url(images/Pink/abxy.png);}
+.xbox .trigger.Pink {background: url(images/Pink/trigger.png);}
+.xbox .stick.Pink {background: url(images/Pink/stick.png);background-position: -85px 0;}
+.xbox .face.Pink{background: url(images/Pink/dpad.png);}
+.controller.xbox.Pink {background: url(images/Pink/base.png);}
+
+.xbox .back.Purple, .xbox .start.Purple{background: url(images/Purple/start-select.png);}
+.xbox .bumper.Purple {background: url(images/Purple/bumper.png);}
+.xbox .button.Purple {background: url(images/Purple/abxy.png);}
+.xbox .trigger.Purple {background: url(images/Purple/trigger.png);}
+.xbox .stick.Purple {background: url(images/Purple/stick.png);background-position: -85px 0;}
+.xbox .face.Purple{background: url(images/Purple/dpad.png);}
+.controller.xbox.Purple {background: url(images/Purple/base.png);}
+
+.xbox .back.Red, .xbox .start.Red{background: url(images/Red/start-select.png);}
+.xbox .bumper.Red {background: url(images/Red/bumper.png);}
+.xbox .button.Red {background: url(images/Red/abxy.png);}
+.xbox .trigger.Red {background: url(images/Red/trigger.png);}
+.xbox .stick.Red {background: url(images/Red/stick.png);background-position: -85px 0;}
+.xbox .face.Red{background: url(images/Red/dpad.png);}
+.controller.xbox.Red {background: url(images/Red/base.png);}
+
+.xbox .back.White, .xbox .start.White{background: url(images/White/start-select.png);}
+.xbox .bumper.White {background: url(images/White/bumper.png);}
+.xbox .button.White {background: url(images/White/abxy.png);}
+.xbox .trigger.White {background: url(images/White/trigger.png);}
+.xbox .stick.White {background: url(images/White/stick.png);background-position: -85px 0;}
+.xbox .face.White{background: url(images/White/dpad.png);}
+.controller.xbox.White {background: url(images/White/base.png);}
+
+.xbox .back.Yellow, .xbox .start.Yellow{background: url(images/Yellow/start-select.png);}
+.xbox .bumper.Yellow {background: url(images/Yellow/bumper.png);}
+.xbox .button.Yellow {background: url(images/Yellow/abxy.png);}
+.xbox .trigger.Yellow {background: url(images/Yellow/trigger.png);}
+.xbox .stick.Yellow {background: url(images/Yellow/stick.png);background-position: -85px 0;}
+.xbox .face.Yellow{background: url(images/Yellow/dpad.png);}
+.controller.xbox.Yellow {background: url(images/Yellow/base.png);}
+
+
+.xbox .back, .xbox .start {
+    width: 31px;
+    height: 33px;
+   
+}
+.xbox .bumper {
+    width: 170px;
+    height: 61px;
+    opacity: 0;
+}
+.xbox .button {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+}
+.xbox .trigger {
+    width: 88px;
+    height: 121px;
+    opacity: 0;
+}
+
+.xbox .stick {
+    position: absolute;
+    background-position: -85px 0;
+    height: 83px;
+    width: 83px;
+}
+.xbox .face {
+    position: absolute;
+   
+}
+.controller.xbox {
+    height: 630px;
+    width: 750px;
+}
+
+
+
+.xbox .trigger.left {
+    float: left;
+    background-position: -2px 1px;background-repeat:no-repeat;
+}
+.xbox .trigger.right {
+    float: right;
+    transform: rotateY(180deg);
+}
+.xbox .triggers {
+    width: 446px;
+    height: 121px;
+    position: absolute;
+    left: 152px;
+}
+.xbox .bumpers {
+    position: absolute;
+    width: 536px;
+    height: 61px;
+    left: 107px;
+    top: 129px;
+}
+.xbox .bumper.pressed {
+    opacity: 1;
+}
+
+.xbox .bumper.left {
+    float: left;
+}
+.xbox .bumper.right {
+    float: right;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.xbox .arrows {
+    position: absolute;
+    width: 140px;
+    height: 34px;
+    top: 263px;
+    left: 306px;
+}
+
+.xbox .back {
+    float: left;
+	background-position:0px -36px!important;
+}
+.xbox .start {
+    background-position: 31px -36px!important;
+    float: right;
+}
+.xbox .start.pressed {
+    top: 108px;
+    left: 55px;
+	    background-position: 31px -0px!important;
+}
+
+.xbox .back.pressed {
+    background-position: 0px -0px!important;
+    top: 58px;
+    right: 0px;
+}
+.xbox .abxy {
+    position: absolute;
+    width: 153px;
+    height: 156px;
+    top: 192px;
+    left: 488px;
+}
+.xbox .button.pressed {
+    background-position-y: -48px;
+    margin-top: 5px;
+    opacity: 1;
+}
+.xbox .a {
+    background-position: 0 0;
+    top: 108px;
+    left: 55px;
+}
+
+.xbox .b {
+    background-position: -49px 0;
+    top: 58px;
+    right: 0px;
+}
+
+.xbox .x {
+    background-position: -98px 0;
+    top: 58px;
+    left: 4px;
+}
+
+.xbox .y {
+    background-position: 48px 0;
+    left: 55px;
+    top: 7px;
+}
+
+.xbox .sticks {
+    position: absolute;
+    width: 371px;
+    height: 196px;
+    top: 239px;
+    left: 144px;
+}
+.xbox .sticks .pressed {
+    background-position: 0 0;
+}
+
+.xbox .stick.left {
+    top: 0;
+    left: 0;
+}
+
+.xbox .stick.right {
+    top: 113px;
+    left: 288px;
+}
+
+.xbox .dpad {
+    position: absolute;
+    width: 110px;
+    height: 111px;
+    top: 345px;
+    left: 223px;
+}
+.xbox .face.pressed {
+    opacity: 1;
+}
+.face.up.pressed{background-position: -112px -0px!important;}
+.face.left.pressed{background-position: -76px -94px!important;}
+.face.right.pressed{background-position: -76px -57px!important;}
+.face.down.pressed{background-position: -75px -128px!important;}
+
+.xbox .face.up {
+    background-position: -37px 0;
+	left: 38px;
+    top: 0px;
+    width: 33px;
+    height: 56px;
+}
+
+.xbox .face.down {
+    left: 37px;
+    bottom: 0;
+    width: 34px;
+    height: 56px;
+}
+
+.xbox .face.left {background-position: -1px -94px;
+    width: 55px;
+    height: 34px;
+    top: 38px;
+    left: 0;
+}
+.xbox .face.right {
+    background-position: -1px -57px;
+    width: 55px;
+    height: 35px;
+    top: 38px;
+    right: 0;
+}
+
+
+.xbox.half {
+    margin-top: -315px;
+}
+
+.xbox {
+    background: no-repeat center;
+}
+
+/*END Xbox One Controller Styling*/
+
+#color-picker {
+    display: inline-block;
+    width: 50px;
+    color: whitesmoke;
+    line-height: normal;
+}
+
+#color-picker i {
+    font-size: 42px;
+    transform: translateY(8%);
+}
+
+#color-picker-input {
+    transform: scale(0);
+}
+.setbgcolor,.bdcolorpick {
+    display: inline-block;
+}
+span.bgtext {
+    margin-top: -5px;
+    display: inline-block;
+    line-height: 29px;
+    font-weight: bolder;
+    font-size: 18px;
+    vertical-align: middle;
+	text-shadow: 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white;
+}
+.setbgcolor {
+    margin-top: 0px;
+    position: fixed;
+    margin-left: 5px;
+}
+.controllercolorset {
+    position: absolute;
+    bottom: 0px;
+}
