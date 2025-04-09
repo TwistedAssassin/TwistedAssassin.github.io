@@ -258,3 +258,6 @@ background-position: 171px 0;}
 .xbox {
     background: no-repeat center;
 }
+.xbox .bumper.pressed {
+    background-position-x: 172px;
+}
