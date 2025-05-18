@@ -1,144 +1,140 @@
-body { 
-    background-color: #000000; 
-    background-color: RGBA(0, 0, 0, 0); 
-    margin: 0 auto; 
-    overflow: hidden; 
-} .controller.ds4{
-    background: url(https://philipbry.github.io/ZDjUbh0.png);
-    width: 794px;
-    height: 639px;
+
+/*-----------------------------------------------------------------------------------*/
+.controller.ds4{
+    background: url(base.png);
+    width: 783px;
+    height: 657px;
     margin-left: 0;
     margin-top: 0;
-} .ds4 .sticks {
+} 
+/*-----------------------------------------------------------------------------------*/
+.ds4 .sticks {
 	width: 367px;
     height: 95px;
     left: 222px;
     top: 294px;
-}.ds4 .stick {
-    background: url(https://philipbry.github.io/3sBwghP.png);
-    width: 95px;
-    height: 95px;
-} .ds4 .stick.pressed.left, .ds4 .stick.pressed.right {
-    background-position: -95px 0;
-} .ds4 .stick.right {
-    top: 0;
-    left: 255px;
-} .ds4 .abxy {
-    width: 181px;
-    height: 181px;
-    left: 559px;
-    top: 152px;
-} .ds4 .button {
-    background: url(https://philipbry.github.io/HdHbA0t.png);
-    width: 54px;
-    height: 54px;
-} .ds4 .button.pressed {
-  	background-position-y: -55px;
-	margin-top: 0;
-} .ds4 .a {
-    background-position: 0 0;
-    left: 59px;
-    top: 116px;
-} .ds4 .b {
-    background-position: -54px 0;
-    left: 118px;
-    top: 59px;
-} .ds4 .x {
-    background-position: -108px 0;
-    left: 0px;
-    top: 58px;
-} .ds4 .y {
-    background-position: -162px 0;
-    left: 59px;
-    top: 0px;
-} .ds4 .arrows {
+}
+.ds4 .stick {
+    background: url(sticknorm.png);
+    width: 92px;
+    height: 89px;
+} 
+.ds4 .stick.pressed.left, .ds4 .stick.pressed.right {
+    background: url(stickpressed.png);
+} 
+.ds4 .stick.right {
+    top: 52px;
+    left: 246px;
+}
+/*-----------------------------------------------------------------------------------*/
+
+.ds4 .button {
+    width: 67px;
+    height: 68px;
+} 
+.ds4 .a {
+   background: url(X.png);
+   left: 34px;
+   top: 148px;
+   background: none;
+} 
+.ds4 .b {
+   background: url(circle.png);
+   left: 91px;
+   top: 90px;
+   background: none;
+} 
+.ds4 .x {
+   background: url(square.png);
+   left: -24px;
+   top: 90px;
+   background: none;
+} 
+.ds4 .y {
+   background: url(triangle.png);
+   left: 34px;
+   top: 32px;
+   background: none;
+} 
+
+.ds4 .a.pressed {
+   background: url(X.png);
+} 
+.ds4 .b.pressed {
+   background: url(circle.png);
+} 
+.ds4 .x.pressed {
+   background: url(square.png);
+} 
+.ds4 .y.pressed {
+   background: url(triangle.png);
+} 
+/*-----------------------------------------------------------------------------------*/
+.ds4 .arrows {
     left: 195px;
 	top: 140px;
     width: 416px;
     height: 57px;
-} .ds4 .quadrant { 
-    display: none; 
-} .ds4 .back, .ds4 .start {
-    background: url(https://philipbry.github.io/PrAfLDQ.png);
-    width: 23px;
-    height: 37px;
-    margin-top: -8px;
-    margin-left: 5px;
-    opacity: 0;
+} 
+/*-----------------------------------------------------------------------------------*/
+.ds4 .back, .ds4 .start {
+    width: 26px;
+    height: 46px;
 } .ds4 .start {
-    background-position: 23px 0;
-    margin-right: 16px;
+    margin-right: 25px;
     float: right;
-} .ds4 .dpad {
-	width: 144px;
-    height: 144px;
-    left: 71px;
-    top: 196px;
-} .ds4 .face {
-    background: none;
-} .ds4 .bumpers {
-    width: 620px;
-    height: 36px;
-    left: 90px;
-    top: 98px;
-} .ds4 .bumper {
-    background: url(https://philipbry.github.io/wijYAzG.png);
-    width: 114px;
-    height: 36px;
-    opacity: 0;
-} .ds4 .bumper.right {
-    margin-right: 6px;
-} .ds4 .triggers {
-    width: 593px;
-    height: 97px;
-    left: 100px;
-} .ds4 .trigger {
-    background: url(https://philipbry.github.io/KcAyIZw.png);
-    width: 100px;
-    height: 97px;
-    opacity: 0;
-} .ds4 .trigger.right {
-    background-position: -100px 0;
-	transform: rotateY(0);
-} .ds4 .touchpad {
-    width: 320px;
-    height: 167px;
-    position: absolute;
-    left: 237px;
-    top: 97px;
-} .ds4 .touchpad.pressed {
+    margin-top: 30px;
+    background-position: 0px,0px;
+} 
+
+.ds4 .back {
+	margin-left: 1px;
+	margin-top: 30px;
+	background-position: 0px, 0px;
+	}
+ .ds4 .start {background-image: url(start.png);} 
+ .ds4 .back {background-image: url(select.png);} 
+/*-----------------------------------------------------------------------------------*/
+.ds4 .bumper{width: 105px; height: 39px;}
+.ds4 .bumper.right {background: url(r1.png);margin-top: 39px;margin-right: 11px;transform: none;}
+.ds4 .bumper.left {background: url(L1.png);}
+/*-----------------------------------------------------------------------------------*/
+ .ds4 .trigger {width: 89px;height: 124px;}
+.ds4 .trigger.right {background: url(R2.png);transform: rotateY(0);} 
+.ds4 .trigger.left {background: url(L2.png);transform: rotateY(0);} 
+/*-----------------------------------------------------------------------------------
+.ds4 .touchpad.pressed {
     background: url(https://philipbry.github.io/Gnd106J.png);
-} .ds4 .dpad {
-    position: absolute;
-    width: 125px;
-    height: 126px;
-    top: 171px;
-    left: 82px;
-} .ds4 .face {
-    background: url(https://philipbry.github.io/548MWGT.png);
-    position: absolute;
-} .ds4 .face.up, .ds4 .face.down {
-    width: 44px;
-    height: 58px;
+} 
+-----------------------------------------------------------------------------------*/
+  .ds4 .face.up, .ds4 .face.down {
+    width: 61px;
+    height: 72px;
 } .ds4 .face.left, .ds4 .face.right {
-    width: 57px;
-    height: 44px;
+    width: 72px;
+    height: 61px;
 } .ds4 .face.up {
-    left: 45px;
-    top: 0;
-    background-position: 0px 0;
+    left: 26px;
+    top: 28px;
+    background: none;
 } .ds4 .face.down {
-    left: 45px;
-    bottom: -7px;
-    background-position: -44px 0;
+    left: 26px;
+    bottom: -50px;
+    background: none;
 } .ds4 .face.left {
-	top: 45px;
-    left: 0;
-    background-position: -88px 0;
+	top: 72px;
+	left: -17px;
+	background: none;
 } .ds4 .face.right {
-    top: 44px;
-    right: -7px;
-    background-position: -144px 0;
-} .ds4 .face.pressed {
-    background-position-y: 58px;
-}
+    top: 72px;
+    right: -5px;
+    background: none;
+} .ds4 .face.up.pressed {
+    background: url(dup.png);
+} .ds4 .face.down.pressed {
+    background: url(ddown.png);
+} .ds4 .face.left.pressed {
+	background: url(dleft.png);
+} .ds4 .face.right.pressed {
+    background: url(dright.png);
+} 
