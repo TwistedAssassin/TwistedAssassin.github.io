@@ -23,7 +23,7 @@ email: alltwisteddesigns@gmail.com
 
 
 /*---------------------a,b,x,y / X,circle,square,triangle----------------------=------*/
-.ds4 .abxy {top: 166px;left: 573px;}
+.ds4 .abxy {top: 159px;left: 568px;}
 .ds4 .button {width: 67px;height: 68px;background-repeat:no-repeat!important;} 
 .ds4 .a {background: url(x.png);left: 34px;top: 148px;}   /* A,X */
 .ds4 .b {background: url(circle.png);left: 91px;top: 90px;} /* B,Circle */
@@ -79,4 +79,4 @@ email: alltwisteddesigns@gmail.com
 .ds4 .face.up.pressed {background: url(up2.png);} 
 .ds4 .face.down.pressed {background: url(down2.png);} 
 .ds4 .face.left.pressed {background: url(left2.png);} 
-.ds4 .face.right.pressed {ba
+.ds4 .face.right.pressed {background: url(right2.png);} 
