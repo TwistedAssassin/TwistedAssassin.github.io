@@ -12,8 +12,7 @@ email: alltwisteddesigns@gmail.com
 
 /*---------------------------Controller base-----------------------------------------*/
 .controller.ds4{background: url(base.png);width: 783px;height: 657px;margin-left: 0; margin-top: 0;} 
-
-
+.ds4.disconnected {background: url(diss.png);/*-webkit-filter: grayscale(1) invert(0);filter: grayscale(1) invert(0);*/opacity:0.7}
 /*-------------------------------Sticks----------------------------------------------*/
 .ds4 .sticks {width: 367px;height: 95px;left: 222px;top: 294px;}
 .ds4 .stick {background: url(stick.png);width: 92px;height: 89px;} 
@@ -23,7 +22,7 @@ email: alltwisteddesigns@gmail.com
 
 
 /*---------------------a,b,x,y / X,circle,square,triangle----------------------=------*/
-.ds4 .abxy {top: 159px;left: 568px;}
+.ds4 .abxy {top: 160px;left: 568px;}
 .ds4 .button {width: 67px;height: 68px;background-repeat:no-repeat!important;} 
 .ds4 .a {background: url(x.png);left: 34px;top: 148px;}   /* A,X */
 .ds4 .b {background: url(circle.png);left: 91px;top: 90px;} /* B,Circle */
