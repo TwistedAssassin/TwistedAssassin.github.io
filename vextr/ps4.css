@@ -1,4 +1,14 @@
-/*BEGIN PS4 Controller Styling*/
+/*
+
+Created by: Twisted Designs
+
+Instagram:justaliltwisted1
+Discord:justaliltwisted1
+Discord Server:https://discord.gg/TMCXFArj
+FB: facebook.com/Tw1stedDesigns
+email: alltwisteddesigns@gmail.com
+
+*/
 .controller.ds4 {
     background: url(base.png);
     height: 600px;
@@ -46,16 +56,17 @@
 }
 
 .ds4 .bumper {
+    opacity: 1;
     width: 103px;
     height: 26px;
+    background-position: 0px -26px!important;
     background: url(bumper.png) no-repeat;
-    
 }
 .ds4 .bumper.left.pressed {
-    background-position: 0px -26px;
+    background-position: 0px 0px!important;
 }
 .ds4 .bumper.right.pressed {
-    background-position: 0px -26px;
+    background-position: 0px 0px!important;
 }
 .ds4 .bumpers {
     position: absolute;
@@ -148,7 +159,7 @@ background-position: -29px 0px;}
 }
 
 .ds4 .button.pressed {
-    /* top: 1px; */background-position-y: 54px;
+    /* top: 1px; */
     margin-top: 1px;
 }
 
@@ -173,7 +184,10 @@ top: 111px;}
     top: -7px;background-position: 54px 1px;
     left: 61px;
 }
-
+.button.a.pressed {background-position: 0px 53px;}
+.button.b.pressed {background-position: -54px 53px;}
+.button.x.pressed {background-position: 108px 53px;}
+.button.y.pressed {background-position: 54px 54px;}
 .ds4 .sticks {
     position: absolute;
     width: 361px;
