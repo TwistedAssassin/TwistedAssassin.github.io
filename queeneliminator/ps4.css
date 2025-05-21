@@ -20,7 +20,7 @@ email: alltwisteddesigns@gmail.com
 
 .ds4.disconnected {
     background: url(diss.png)!important;
-    top: 300px;
+        margin-top: -12px!important;
 }
 
 .ds4.disconnected div {
