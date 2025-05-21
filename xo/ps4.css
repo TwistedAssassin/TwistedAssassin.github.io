@@ -28,7 +28,7 @@ email: alltwisteddesigns@gmail.com
 }
 
 .ds4 .triggers {
-    top: -12px;
+    top: 1px;
     width: 578px;
     height: 90px;
     position: absolute;
@@ -117,7 +117,7 @@ background-position: 123px 10px;}
     position: absolute;
     width: 343px;
     height: 46px;
-    top: 138px;
+    top: 151px;
     left: 231px;
 }
 
@@ -227,7 +227,7 @@ transform: none!important;}
     position: absolute;
     width: 125px;
     height: 126px;
-    top: 195px;
+    top: 194px;
     left: 92px;
 }
 
