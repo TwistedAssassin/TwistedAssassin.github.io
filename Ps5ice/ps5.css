@@ -11,7 +11,7 @@ email: alltwisteddesigns@gmail.com
 */
 
 /*---------------------------Controller base-----------------------------------------*/
-.controller.ds4{background: url(base2.png);width: 783px;height: 657px;margin-left: 0; margin-top: 0;} 
+.controller.ds4{background: url(base3.png);width: 783px;height: 657px;margin-left: 0; margin-top: 0;} 
 .ds4.disconnected {background: url(diss.png);/*-webkit-filter: grayscale(1) invert(0);filter: grayscale(1) invert(0);*/opacity:0.7}
 /*-------------------------------Sticks----------------------------------------------*/
 .ds4 .sticks {width: 367px;height: 95px;left: 222px;top: 294px;}
