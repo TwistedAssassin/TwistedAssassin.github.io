@@ -19,7 +19,7 @@ email: alltwisteddesigns@gmail.com
 .ds4 .stick.pressed.left, .ds4 .stick.pressed.right {background: url(stick2.png);} 
 .ds4 .stick.right {top: 52px; left: 246px;}
 .ds4 .stick.left {top: 52px;left: 0px;}
-
+.touchpad.pressed{opacity: 0;}
 
 /*---------------------a,b,x,y / X,circle,square,triangle----------------------=------*/
 .ds4 .abxy {top: 160px;left: 568px;}
