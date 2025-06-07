@@ -61,13 +61,11 @@ email: alltwisteddesigns@gmail.com
 .ds4 .trigger-button.right.pressed {background: url(rtrigger2.png);} 
 
 
-/*-------------------------Touch pad-----------------------------------------------
-.ds4 .touchpad.pressed {
-    background: url(https://philipbry.github.io/Gnd106J.png);
-} 
+/*-------------------------Touch pad-----------------------------------------------*/
+.ds4 .touchpad.pressed {left: 234px;top: 138px; width: 312px;height: 173px;background: url(pad.png) no-repeat center;}
 
 
-----------------------------D-Pad-----------------------------------------------*/
+/*----------------------------D-Pad-----------------------------------------------*/
 .ds4 .arrows {left: 195px;top: 140px;width: 416px;height: 57px;} 
 .ds4 .face.up, .ds4 .face.down {width: 61px; height: 72px;} 
 .ds4 .face.left, .ds4 .face.right {width: 72px; height: 61px;} 
@@ -79,3 +77,5 @@ email: alltwisteddesigns@gmail.com
 .ds4 .face.down.pressed {background: url(down2.png);} 
 .ds4 .face.left.pressed {background: url(left2.png);} 
 .ds4 .face.right.pressed {background: url(right2.png);} 
+
+
