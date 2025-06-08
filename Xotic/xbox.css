@@ -48,7 +48,7 @@ email: alltwisteddesigns@gmail.com
 .ds4 .bumper.right {background: url(rbumper.png);/* margin-top: 39px; *//* margin-right: 50px; */transform: none;float: right;}
 .ds4 .bumper.left.pressed {background: url(lbumper2.png);}
 .ds4 .bumper.right.pressed {background: url(rbumper2.png);}
-
+.ds4 .bumpers { width: 538px;height: 23px;left: 109px; top: 132px;}
 
 /*-----------------------------Triggers------------------------------------------*/
 .ds4 .triggers {width: 648px;height: 90px;position: absolute;left: 54px;top: 1px;}
@@ -68,16 +68,33 @@ email: alltwisteddesigns@gmail.com
 /*----------------------------D-Pad-----------------------------------------------*/
 .ds4 .arrows {left: 308px;top: 266px;width: 142px;height: 57px;} 
 .ds4 .face.up, .ds4 .face.down {width: 44px;height: 85px;} 
-.ds4 .face.left, .ds4 .face.right {width: 85px;height: 44px;} 
+.ds4 .face.left, .ds4 .face.right {width: 84px;height: 44px;} 
 /*.ds4 .face.up {background: url(up.png);left: 26px; top: 28px;} 
 .ds4 .face.down {background: url(down.png);left: 26px;bottom: -30px;} 
 .ds4 .face.left {background: url(left.png);top: 70px;left: -17px;} 
 .ds4 .face.right {background: url(right.png);top: 70px;right: 11px;} */
+
+
+/*new style*/
+.ds4 .face.up {background: none;left: 26px; top: 28px;} 
+.ds4 .face.down {background: none;left: 26px;bottom: -30px;} 
+.ds4 .face.left {background: none;top: 70px;left: -17px;} 
+.ds4 .face.right {background: none;top: 70px;right: 11px;} 
 .ds4 .face.up.pressed {background: url(up.png);} 
 .ds4 .face.down.pressed {background: url(down.png);} 
 .ds4 .face.left.pressed {background: url(left.png);} 
 .ds4 .face.right.pressed {background: url(right.png);} 
 
+.ds4 .dpad {
+    position: absolute;
+    width: 125px;
+    height: 126px;
+    top: 311px;
+    left: 234px;
+}
+
+
+/*----------------------------power button-----------------------------------------------*/
 .ds4 .meta.pressed {
     background: none;
 }
