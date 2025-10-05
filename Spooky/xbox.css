@@ -27,11 +27,11 @@ email: alltwisteddesigns@gmail.com
 .ds4 .a {background: url(x2.png);left: 34px;top: 136px;}   /* A,X */
 .ds4 .b {background: url(circle2.png);left: 84px;top: 84px;} /* B,Circle */
 .ds4 .x {background: url(square2.png);left: -17px;top: 84px;} /* X,Square */
-.ds4 .y {background: url(tiangle2.png);left: 34px;top: 32px;}  /* Y,Triangle */
+.ds4 .y {background: url(triangle2.png);left: 34px;top: 32px;}  /* Y,Triangle */
 .ds4 .a.pressed {background: url(x.png);} /* A,X */
 .ds4 .b.pressed {background: url(circle.png);} /* B,Circle */
 .ds4 .x.pressed {background: url(square.png);} /* X,Square */
-.ds4 .y.pressed {background: url(triangle.png);} /* Y,Triangle */
+.ds4 .y.pressed {background: url(tiangle.png);} /* Y,Triangle */
 
 
 /*--------------------------Start,Select------------------------------------------*/
@@ -98,5 +98,6 @@ email: alltwisteddesigns@gmail.com
 .ds4 .meta.pressed {
     background: none;
 }
+
 
 
