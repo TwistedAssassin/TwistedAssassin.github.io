@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Config Builder</title>
+<style>
+ /* Green/Black/White theme */
+  :root{
+    --bg:#000000;
+    --panel:#0f1013;  /* dark grey panel */
+    --text:#ffffff;
+    --muted:#d7dee6;  /* cooler muted */
+    --line:#1a1d23;   /* grey divider */
+    --ring:#2f3542;   /* grey ring/border */
+    --accent:#22c55e; /* keep emerald accent */
+    --field:#121418;  /* dark grey input field */
+    --shadow: 0 6px 18px rgba(34,197,94,0.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background: #070707;color:var(--text);font:14px/1.45 system-ui,Segoe UI,Roboto,Arial}
+  header {position: sticky;top: 0;z-index: 2;display: flex;gap: 12px;align-items: center;background: #060606;color: var(--text);padding: 10px 12px;border-radius: 10px;cursor: pointer;box-shadow: none;transition: .15s border-color, .15s transform;border-bottom: 1px solid var(--line);box-shadow: none;}
+  header h1{font-size:16px;margin:0;font-weight:600;letter-spacing:.2px}
+  .toolbar {display: flex;gap: 8px;flex-wrap: wrap;right: 10px;position: absolute;}
+  button{border: 1px solid #379237;background:var(--panel);color:var(--text);padding:8px 12px;border-radius:10px;cursor:pointer;box-shadow: none;transition:.15s border-color,.15s transform;  }
+  button:hover{border-color:var(--accent);transform: translateY(-1px)}
+  .page{max-width:1100px;margin:20px auto;padding:0 16px}
+  .card{background: #0a0a0a;border:1px solid var(--line);border-radius:14px;margin-bottom:18px;overflow:hidden;box-shadow: none;}
+  .card h2{margin:0;padding:10px 14px;border-bottom:1px solid var(--line);font-size:15px;background: #060606;color: #379237;}
+  .grid{display:grid;grid-template-columns:270px 1fr;gap:10px 14px;padding:14px}
+  label.setting{color:var(--muted);padding-top:6px}
+  input[type="text"],input[type="number"],select{width:100%;background: #0a0a0a;border: 1px solid #379237;border-radius:10px;padding:10px 12px;color:var(--text);outline:none;box-shadow:none;  }
+  input[type="text"]:focus,input[type="number"]:focus,select:focus{border-color:var(--accent)}
+  input[readonly]{cursor:default}
+  .row{display:contents}
+  .inline{display:flex;gap:8px;align-items:center}
+  .toggle{display:flex;align-items:center;gap:10px}
+  .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;border: 1px solid #379237;background:var(--field);cursor:pointer;box-shadow: none;}
+  .icon-btn:hover{border-color:var(--accent)}
+  .capturing{outline:1px dashed var(--accent)}
+  .color-row{display:flex;gap:8px;align-items:center}
+  .color-row input[type="color"]{width:44px;height:34px;border:1px solid var(--ring);border-radius:8px;background:#000;padding:0}
+  .meta{margin-top:4px;color:var(--muted);font-size:12px}
+  .toast{position:fixed;right:16px;bottom:16px;background:#0f1114;border:1px solid var(--ring);padding:10px 12px;border-radius:10px;color:var(--text);opacity:.98;z-index:3;box-shadow: var(--shadow)}
+ </style>
+
+</head>
+<body>
+<header>
+  <h1>Config Builder</h1>
+  <div class="toolbar">
+<button id="btnImport">Import config.txt</button>
+<button id="btnExport">Export config.txt</button>
+<button id="btnReset">Reset to defaults</button>
+  </div>
+</header>
+
+<div class="page">
+  <div class="card">
+<h2>Main</h2>
+<div class="grid" id="sec-main"></div>
+  </div>
+  <div class="card">
+<h2>ESP</h2>
+<div class="grid" id="sec-esp"></div>
+  </div>
+  <div class="card">
+<h2>Radar</h2>
+<div class="grid" id="sec-radar"></div>
+  </div>
+  <div class="card">
+<h2>Console</h2>
+<div class="grid" id="sec-console"></div>
+  </div>
+  <div class="card">
+<h2>Aimbot</h2>
+<div class="grid" id="sec-aimbot"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // ------- Field schema with types & defaults -------
+  const F = {
+// Main
+main_enable: {sec:'main', label:'Enable/Disable Key', type:'key', def:''},
+main_cl: {sec:'main', label:'Kernel Input', type:'text', def:''},
+main_driver: {sec:'main', label:'Driver Name', type:'text', def:''},
+main_macrofiles: {sec:'main', label:'Macro file(s)', type:'text', def:''},
+main_automacros: {sec:'main', label:"Auto Macros", type:'multikey', def:''},
+main_clkey: {sec:'main', label:'-cl command Key', type:'key', def:''},
+main_quick: {sec:'main', label:'Too Quick Rate', type:'number', def:'100'},
+main_priority: {sec:'main', label:'Process priority', type:'select', options:['UNSET','REALTIME PRIORITY','HIGH PRIORITY','ABOVE NORMAL PRIORITY','NORMAL PRIORITY','IDLE PRIORITY','BELOW NORMAL PRIORITY'], def:'NORMAL PRIORITY'},
+main_dpi: {sec:'main', label:'DPI scaling', type:'toggle', def:false},
+
+// ESP
+esp_entities:{sec:'esp', label:'Entities to display', type:'number', def:'100'},
+esp_edge_x:{sec:'esp', label:'Edge offset X', type:'number', def:'150'},
+esp_edge_y:{sec:'esp', label:'Edge offset Y', type:'number', def:'150'},
+esp_font_size:{sec:'esp', label:'Font size', type:'number', def:'30'},
+esp_color_targetable:{sec:'esp', label:'Targetable Color', type:'colorDec', def:'16711680'},
+esp_color_untargetable:{sec:'esp', label:'Untargetable Color', type:'colorDec', def:'48895'},
+esp_color_allied:{sec:'esp', label:'Allied Color', type:'colorDec', def:'16776960'},
+esp_color_bot:{sec:'esp', label:'Bot Color', type:'colorDec', def:'16743680'},
+esp_show_players:{sec:'esp', label:'Show players', type:'select', options:['UNSET','Enemy','All','None'], def:'Enemy'},
+esp_refresh:{sec:'esp', label:'Refresh rate', type:'number', def:'10'},
+esp_font:{sec:'esp', label:'Font', type:'text', def:'Arial'},
+esp_bx:{sec:'esp', label:'Bounding X offset', type:'number', def:'-6'},
+esp_by:{sec:'esp', label:'Bounding Y offset', type:'number', def:'-130'},
+esp_bw:{sec:'esp', label:'Bounding Width', type:'number', def:'50'},
+esp_bh:{sec:'esp', label:'Bounding Height', type:'number', def:'150'},
+esp_bd:{sec:'esp', label:'Bounding Depth', type:'number', def:'50'},
+esp_tx:{sec:'esp', label:'ESP text offset X', type:'number', def:'0'},
+esp_ty:{sec:'esp', label:'ESP text offset Y', type:'number', def:'0'},
+esp_th:{sec:'esp', label:'Bounding box thickness', type:'number', def:'2'},
+esp_char:{sec:'esp', label:'Players character', type:'onechar', def:'*'},
+
+// Radar
+rad_x:{sec:'radar', label:'X position', type:'number', def:'0'},
+rad_y:{sec:'radar', label:'Y position', type:'number', def:'0'},
+rad_w:{sec:'radar', label:'Width', type:'number', def:'1920'},
+rad_h:{sec:'radar', label:'Height', type:'number', def:'1080'},
+rad_id:{sec:'radar', label:'ID', type:'number', def:'45345342'},
+rad_entities:{sec:'radar', label:'Entities to display', type:'number', def:'100'},
+rad_font_size:{sec:'radar', label:'Font size', type:'number', def:'30'},
+rad_bg:{sec:'radar', label:'Background Color', type:'colorDec', def:'255'},
+rad_center:{sec:'radar', label:'Center Color', type:'colorDec', def:'16646144'},
+rad_enemy:{sec:'radar', label:'Enemy Color', type:'colorDec', def:'65280'},
+rad_allied:{sec:'radar', label:'Allied Color', type:'colorDec', def:'160000'},
+rad_indicator:{sec:'radar', label:'Indicator', type:'onechar', def:'*'},
+rad_show:{sec:'radar', label:'Show players', type:'toggle', def:false},
+rad_trans:{sec:'radar', label:'Transparency', type:'toggle', def:false},
+rad_top:{sec:'radar', label:'Topmost', type:'toggle', def:false},
+rad_dist_mult:{sec:'radar', label:'Distance multiplier', type:'number', def:'0.05'},
+rad_refresh:{sec:'radar', label:'Refresh rate', type:'number', def:'50'},
+rad_font:{sec:'radar', label:'Font', type:'text', def:'Arial'},
+
+// Console
+con_w:{sec:'console', label:'Width', type:'number', def:'1000'},
+con_h:{sec:'console', label:'Height', type:'number', def:'1600'},
+con_font_size:{sec:'console', label:'Font size', type:'number', def:'40'},
+con_lines:{sec:'console', label:'# of lines', type:'number', def:'30'},
+con_bg:{sec:'console', label:'background', type:'colorDec', def:'0'},
+con_font_color:{sec:'console', label:'Font', type:'colorDec', def:'120000'},
+con_x:{sec:'console', label:'X position', type:'number', def:'0'},
+con_y:{sec:'console', label:'Y position', type:'number', def:'0'},
+con_trans:{sec:'console', label:'Transparency', type:'toggle', def:false},
+
+// Aimbot
+aim_keys:{sec:'aimbot', label:"Pressed Activate key's", type:'multikey', def:''},
+aim_xsens:{sec:'aimbot', label:'X sensitivity', type:'number', def:''},
+aim_ysens:{sec:'aimbot', label:'Y sensitivity', type:'number', def:''},
+aim_msmooth:{sec:'aimbot', label:'Mouse smoothing', type:'number', def:'2'},
+aim_maxdist_screen:{sec:'aimbot', label:'Max screen distance', type:'number', def:'100'},
+aim_ignore_y:{sec:'aimbot', label:'Ignore Target on Y-axis', type:'toggle', def:true},
+aim_ycorr:{sec:'aimbot', label:'Y-axis correction', type:'number', def:'-80'},
+aim_xcorr:{sec:'aimbot', label:'X-axis correction', type:'number', def:'0'},
+aim_ff:{sec:'aimbot', label:'Friendly fire', type:'toggle', def:false},
+aim_toggle:{sec:'aimbot', label:'Aimbot Key', type:'key', def:''},
+aim_keep:{sec:'aimbot', label:'Keep Searching for target', type:'toggle', def:true},
+aim_minpred:{sec:'aimbot', label:'Min distance 4 prediction aiming', type:'number', def:'2000'},
+aim_antirecoil:{sec:'aimbot', label:'Anti-Recoil', type:'toggle', def:true},
+aim_recoil_smooth:{sec:'aimbot', label:'Recoil Smoothing', type:'number', def:'20'},
+aim_refresh:{sec:'aimbot', label:'Refresh Rate', type:'number', def:'100'},
+aim_recoil_adj:{sec:'aimbot', label:'Recoil adjustmen', type:'number', def:'-20'},
+aim_pred_corr:{sec:'aimbot', label:'Aiming prediction correction', type:'number', def:'1'},
+aim_maxdist:{sec:'aimbot', label:'Max distance', type:'number', def:'0'},
+aim_dist_type:{sec:'aimbot', label:'Aim distance type', type:'select', options:['UNSET','Center Screen','From Player'], def:'Center Screen'},
+aim_switch_wait:{sec:'aimbot', label:'switching targets wait', type:'number', def:'500'},
+aim_circle_color:{sec:'aimbot', label:'Circle Color', type:'colorDec', def:'16711680'},
+aim_circle_th:{sec:'aimbot', label:'Circle thickness', type:'number', def:'1'},
+aim_yoff:{sec:'aimbot', label:'Y-Offset', type:'number', def:'-18'},
+aim_xoff:{sec:'aimbot', label:'X-Offset correction', type:'number', def:'-8'},
+aim_trig_press:{sec:'aimbot', label:'Pressed Triggerbot Key', type:'key', def:''},
+aim_trig:{sec:'aimbot', label:'Triggerbot On/Off Key', type:'key', def:''},
+aim_fire:{sec:'aimbot', label:'Fire Weapon Key', type:'key', def:'1'},
+aim_not_visible:{sec:'aimbot', label:'Not Visible Timer', type:'number', def:'0.1'},
+  };
+
+  const orderBySection = {
+main: ['main_enable','main_cl','main_driver','main_macrofiles','main_automacros','main_clkey','main_quick','main_priority','main_dpi'],
+esp:  ['esp_entities','esp_edge_x','esp_edge_y','esp_font_size','esp_color_targetable','esp_color_untargetable','esp_color_allied','esp_color_bot','esp_show_players','esp_refresh','esp_font','esp_bx','esp_by','esp_bw','esp_bh','esp_bd','esp_tx','esp_ty','esp_th','esp_char'],
+radar:['rad_x','rad_y','rad_w','rad_h','rad_id','rad_entities','rad_font_size','rad_bg','rad_center','rad_enemy','rad_allied','rad_indicator','rad_show','rad_trans','rad_top','rad_dist_mult','rad_refresh','rad_font'],
+console:['con_w','con_h','con_font_size','con_lines','con_bg','con_font_color','con_x','con_y','con_trans'],
+aimbot:['aim_keys','aim_xsens','aim_ysens','aim_msmooth','aim_maxdist_screen','aim_ignore_y','aim_ycorr','aim_xcorr','aim_ff','aim_toggle','aim_keep','aim_minpred','aim_antirecoil','aim_recoil_smooth','aim_refresh','aim_recoil_adj','aim_pred_corr','aim_maxdist','aim_dist_type','aim_switch_wait','aim_circle_color','aim_circle_th','aim_yoff','aim_xoff','aim_trig_press','aim_trig','aim_fire','aim_not_visible'],
+  };
+
+  // ----- Render helpers -----
+  function makeClearBtn(forId){ return '<button class="icon-btn" type="button" data-act="clear" data-for="'+forId+'" title="Clear">✕</button>'; }
+  function makeKeyBtn(forId){ return '<button class="icon-btn" type="button" data-act="listen-key" data-for="'+forId+'" title="Listen">⌨</button>'; }
+  function makeAddBtn(forId){ return '<button class="icon-btn" type="button" data-act="list-add" data-for="'+forId+'" title="Add key">＋</button>'; }
+  function makeRemBtn(forId){ return '<button class="icon-btn" type="button" data-act="list-remove" data-for="'+forId+'" title="Remove key">－</button>'; }
+
+  function renderSec(secId, containerId){
+const cont=document.getElementById(containerId);
+orderBySection[secId].forEach(id=>{
+  const f=F[id];
+  const row=document.createElement('div'); row.className='row';
+  const lab=document.createElement('label'); lab.className='setting'; lab.htmlFor=id; lab.textContent=f.label;
+  const cell=document.createElement('div');
+  if(f.type==='toggle'){
+cell.innerHTML='<div class="toggle"><input type="checkbox" id="'+id+'"></div>';
+  }else if(f.type==='select'){
+const opts=(f.options||[]).map(o=>'<option>'+o+'</option>').join('');
+cell.innerHTML='<div class="inline"><select id="'+id+'">'+opts+'</select>'+makeClearBtn(id)+'</div>';
+  }else if(f.type==='key'){
+cell.innerHTML='<div class="inline">'
+  + '<input id="'+id+'" type="text" placeholder="Click button then press key" readonly>'
+  + makeKeyBtn(id) + makeClearBtn(id) + '</div>'
+  + '<div class="meta" id="lbl_'+id+'">—</div>';
+  }else if(f.type==='multikey'){
+cell.innerHTML='<div class="inline">'
+  + '<input id="'+id+'" type="text" placeholder="Click + to add key" readonly data-keys="[]">'
+  + makeAddBtn(id) + makeRemBtn(id) + makeClearBtn(id) + '</div>'
+  + '<div class="meta" id="lbl_'+id+'">—</div>';
+  }else if(f.type==='colorDec'){
+const picker=id+'_picker';
+cell.innerHTML='<div class="color-row">'
+  + '<input type="color" id="'+picker+'">'
+  + '<input type="number" id="'+id+'" data-role="color-dec" data-picker="'+picker+'">'
+  + makeClearBtn(id) + '</div>';
+  }else if(f.type==='onechar'){
+cell.innerHTML='<div class="inline"><input id="'+id+'" type="text" maxlength="1">'+makeClearBtn(id)+'</div>';
+  }else{
+const typeAttr=f.type==='number'?'number':'text';
+cell.innerHTML='<div class="inline"><input id="'+id+'" type="'+typeAttr+'">'+makeClearBtn(id)+'</div>';
+  }
+  row.appendChild(lab); row.appendChild(cell); cont.appendChild(row);
+});
+  }
+  renderSec('main','sec-main');
+  renderSec('esp','sec-esp');
+  renderSec('radar','sec-radar');
+  renderSec('console','sec-console');
+  renderSec('aimbot','sec-aimbot');
+
+  // ----- Defaults -----
+  function setDefaults(){
+Object.keys(F).forEach(id=>{
+  const el=document.getElementById(id); if(!el) return;
+  const spec=F[id];
+  if(spec.type==='toggle'){ el.checked=!!spec.def; }
+  else if(spec.type==='select'){ el.value = spec.def ?? 'UNSET'; }
+  else if(spec.type==='colorDec'){
+const n=parseInt(spec.def||'0',10)||0; el.value=String(n);
+const p=document.getElementById(el.dataset.picker); if(p) p.value='#'+('000000'+n.toString(16)).slice(-6);
+  }else if(spec.type==='multikey'){
+el.dataset.keys='[]'; el.value=''; const lbl=document.getElementById('lbl_'+id); if(lbl) lbl.textContent='—';
+  }else{
+el.value = (spec.def==null?'':String(spec.def));
+  }
+});
+  }
+  setDefaults();
+
+  // ----- Utilities -----
+  function toast(m){ const t=document.createElement('div'); t.className='toast'; t.textContent=m; document.body.appendChild(t); setTimeout(()=>t.remove(),1800); }
+  function keyNameFromVK(vk){ vk=parseInt(vk,10);
+const rev={16:'Shift',17:'Ctrl',18:'Alt',91:'Meta',20:'CapsLock',9:'Tab',13:'Enter',27:'Esc',32:'Space',37:'Left',38:'Up',39:'Right',40:'Down',45:'Insert',46:'Delete',36:'Home',35:'End',33:'PgUp',34:'PgDn',8:'Backspace',1:'LButton',2:'RButton',4:'MButton'};
+if(vk>=112&&vk<=123) return 'F'+(vk-111);
+if(rev[vk]) return rev[vk];
+if(vk>=48&&vk<=90) return String.fromCharCode(vk);
+return 'VK'+vk;
+  }
+  function vkFromKeyboardEvent(e){
+const map={'Shift':16,'Control':17,'Alt':18,'Meta':91,'CapsLock':20,'Tab':9,'Enter':13,'Escape':27,' ':32,'ArrowLeft':37,'ArrowUp':38,'ArrowRight':39,'ArrowDown':40,'Insert':45,'Delete':46,'Home':36,'End':35,'PageUp':33,'PageDown':34,'Backspace':8};
+if(map[e.key]!==undefined) return map[e.key];
+if(/^F\\d+$/.test(e.key)) return 111+parseInt(e.key.substring(1),10);
+if(e.key.length===1){ const c=e.key.toUpperCase().charCodeAt(0); if(c>=48&&c<=90) return c; }
+return null;
+  }
+  function getKeyList(id){ const el=document.getElementById(id); if(!el) return []; try{ return JSON.parse(el.dataset.keys||'[]'); }catch{ return []; } }
+  function setKeyList(id,arr){
+const el=document.getElementById(id); if(!el) return;
+const u=[...new Set(arr.filter(n=>Number.isInteger(n)))];
+el.dataset.keys=JSON.stringify(u);
+el.value=u.join('|');
+const lbl=document.getElementById('lbl_'+id);
+if(lbl) lbl.textContent=u.length?('Key: '+u.map(keyNameFromVK).join(' | ')):'—';
+  }
+
+  // ----- Event handlers -----
+  document.body.addEventListener('click', e=>{
+const btn=e.target.closest('button.icon-btn'); if(!btn) return;
+const act=btn.getAttribute('data-act'); const id=btn.getAttribute('data-for'); const el=id?document.getElementById(id):null;
+if(act==='clear' && el){
+  if(el.dataset.role==='color-dec'){ el.value=''; const p=document.getElementById(el.dataset.picker); if(p) p.value='#000000'; }
+  else if(el.dataset.keys!==undefined){ setKeyList(id,[]); }
+  else { el.value=''; const lbl=document.getElementById('lbl_'+id); if(lbl) lbl.textContent='—'; }
+  return;
+}
+if(act==='listen-key' && el){
+  el.value='listening'; el.classList.add('capturing'); const lbl=document.getElementById('lbl_'+id);
+  const stop=()=>{ window.removeEventListener('keydown', onKey, true); window.removeEventListener('mousedown', onMouse, true); el.classList.remove('capturing'); };
+  const onKey=ev=>{ ev.preventDefault(); ev.stopPropagation(); const vk=vkFromKeyboardEvent(ev); if(vk!=null){ el.value=String(vk); if(lbl) lbl.textContent='Key: '+keyNameFromVK(vk); stop(); } };
+  const onMouse=ev=>{ ev.preventDefault(); ev.stopPropagation(); const map={0:1,2:2,1:4}; const vk=map[ev.button]; if(vk!=null){ el.value=String(vk); if(lbl) lbl.textContent='Key: '+keyNameFromVK(vk); stop(); } };
+  window.addEventListener('keydown', onKey, true); window.addEventListener('mousedown', onMouse, true);
+  return;
+}
+if(act==='list-add' && el){ startListCapture('add', id); return; }
+if(act==='list-remove' && el){ startListCapture('remove', id); return; }
+  });
+
+  document.body.addEventListener('input', e=>{
+const n=e.target;
+if(n && n.matches('input[type="color"]')){
+  const decId=n.id.replace('_picker',''); const dec=document.getElementById(decId);
+  if(dec){ const v=parseInt(n.value.replace('#',''),16); dec.value=String(v); }
+}
+if(n && n.matches('input[data-role="color-dec"]')){
+  const p=document.getElementById(n.dataset.picker);
+  if(p){ const iv=parseInt(n.value||'0',10)||0; p.value='#'+('000000'+iv.toString(16)).slice(-6); }
+}
+  });
+
+  function startListCapture(mode, fieldId){
+const inp=document.getElementById(fieldId); if(!inp) return;
+inp.value='listening'; inp.classList.add('capturing');
+const stop=()=>{ window.removeEventListener('keydown', onKey, true); window.removeEventListener('mousedown', onMouse, true); inp.classList.remove('capturing'); };
+const onKey=ev=>{ ev.preventDefault(); ev.stopPropagation(); const vk=vkFromKeyboardEvent(ev); if(vk!=null){ apply(vk);} };
+const onMouse=ev=>{ ev.preventDefault(); ev.stopPropagation(); const map={0:1,2:2,1:4}; const vk=map[ev.button]; if(vk!=null){ apply(vk);} };
+function apply(vk){ let arr=getKeyList(fieldId); if(mode==='add'){ if(!arr.includes(vk)) arr.push(vk); } else { arr=arr.filter(x=>x!==vk); } setKeyList(fieldId,arr); stop(); }
+window.addEventListener('keydown', onKey, true);
+window.addEventListener('mousedown', onMouse, true);
+  }
+
+  // ---------- Positional Export (41 lines) ----------
+  function buildLines(){
+const gv=id => {
+  const el=document.getElementById(id);
+  if(!el) return '';
+  if(el.type==='checkbox') return el.checked ? '1' : '0';
+  return el.value || '';
+};
+const mapShow = v => ({'Enemy':'2','All':'1','None':'0'}[v] ?? '');
+const priHex = v => ({'REALTIME PRIORITY':'0x00000100','HIGH PRIORITY':'0x00000080','ABOVE NORMAL PRIORITY':'0x00008000','NORMAL PRIORITY':'0x00000020','IDLE PRIORITY':'0x00000040','BELOW NORMAL PRIORITY':'0x00004000'}[v] ?? v ?? '');
+
+const L = Array(41).fill('');
+
+L[0] = gv('main_enable');
+L[1] = gv('main_cl');
+L[2] = gv('main_driver');
+L[3] = '0';
+L[4] = gv('main_macrofiles');
+L[5] = gv('main_automacros');
+L[6] = gv('main_clkey');
+
+// L8 ESP
+L[7] = [
+  [gv('esp_entities'), gv('esp_edge_x'), gv('esp_edge_y')].join(','),
+  gv('esp_font_size'),
+  '1',
+  [gv('esp_color_targetable'), gv('esp_color_untargetable'), gv('esp_color_allied'), gv('esp_color_bot')].join(','),
+  '1','1',
+  mapShow(gv('esp_show_players')),
+  '1',
+  gv('esp_refresh'),
+  gv('esp_font')
+].join('|');
+
+// L9 Radar
+L[8] = [
+  gv('rad_x'), gv('rad_y'), gv('rad_w'), gv('rad_h'), gv('rad_id'),
+  gv('rad_entities'), gv('rad_font_size'),
+  gv('rad_bg'), gv('rad_center'), gv('rad_enemy'), gv('rad_allied'),
+  '1', (gv('rad_indicator')||'').slice(0,1), '1', gv('rad_show'), '1',
+  gv('rad_trans'), gv('rad_top'), gv('rad_dist_mult'), gv('rad_refresh'), gv('rad_font')
+].join('|');
+
+L[9]  = gv('main_quick');
+L[10] = priHex(gv('main_priority'));
+L[11] = [gv('con_w'), gv('con_h'), gv('con_font_size'), gv('con_lines'), gv('con_bg'), gv('con_font_color'), gv('con_x'), gv('con_y'), gv('con_trans')].join('|');
+L[12] = gv('main_dpi');
+L[13] = [gv('esp_bx'), gv('esp_by'), gv('esp_bw'), gv('esp_bh'), gv('esp_bd')].join('|');
+L[14] = [gv('esp_tx'), gv('esp_ty')].join('|');
+L[15] = '0';
+L[16] = gv('esp_th');
+L[17] = (gv('esp_char')||'').slice(0,1);
+L[18] = gv('aim_keys');
+L[19] = [gv('aim_xsens'), gv('aim_ysens')].join('|');
+L[20] = gv('aim_msmooth');
+L[21] = gv('aim_maxdist_screen');
+L[22] = gv('aim_ignore_y');
+L[23] = gv('aim_ycorr');
+L[24] = gv('aim_xcorr');
+L[25] = gv('aim_ff');
+L[26] = [gv('aim_toggle'), gv('aim_keep')].join('|');
+L[27] = gv('aim_minpred');
+L[28] = [gv('aim_antirecoil'), gv('aim_recoil_smooth'), gv('aim_refresh')].join('|');
+L[29] = gv('aim_recoil_adj');
+L[30] = gv('aim_fire');
+L[31] = gv('aim_pred_corr');
+L[32] = gv('aim_maxdist');
+L[33] = ({'Center Screen':'1','From Player':'2'}[gv('aim_dist_type')] || gv('aim_dist_type') || '');
+L[34] = gv('aim_switch_wait');
+L[35] = [gv('aim_circle_color'), gv('aim_circle_th')].join('|');
+L[36] = [gv('aim_yoff'), gv('aim_xoff')].join('|');
+L[37] = gv('aim_trig_press');
+L[38] = gv('aim_trig');
+L[39] = gv('aim_fire');
+L[40] = gv('aim_not_visible');
+
+return L;
+  }
+
+  // ---------- Positional Import ----------
+  function applyLines(lines){
+const at=i => (i-1)>=0 && (i-1)<lines.length ? (lines[i-1]||'') : '';
+function set(id,val){ const el=document.getElementById(id); if(el) el.value = (val==null?'':String(val)); }
+setDefaults(); // clear
+
+set('main_enable', at(1)); set('main_cl', at(2)); set('main_driver', at(3));
+set('main_macrofiles', at(5)); set('main_automacros', at(6)); set('main_clkey', at(7));
+
+(function(v){
+  const p=v.split('|');
+  if(p[0]){ const a=p[0].split(','); set('esp_entities', a[0]||''); set('esp_edge_x', a[1]||''); set('esp_edge_y', a[2]||''); }
+  set('esp_font_size', p[1]||'');
+  if(p[3]){ const c=p[3].split(','); set('esp_color_targetable', c[0]||''); set('esp_color_untargetable', c[1]||''); set('esp_color_allied', c[2]||''); set('esp_color_bot', c[3]||''); }
+  if(p[6]){ const map={'2':'Enemy','1':'All','0':'None'}; set('esp_show_players', map[p[6]]||'UNSET'); }
+  set('esp_refresh', p[8]||''); set('esp_font', p[9]||'');
+})(at(8)||'');
+
+(function(v){
+  const p=v.split('|');
+  set('rad_x', p[0]||''); set('rad_y', p[1]||''); set('rad_w', p[2]||''); set('rad_h', p[3]||''); set('rad_id', p[4]||'');
+  set('rad_entities', p[5]||''); set('rad_font_size', p[6]||'');
+  set('rad_bg', p[7]||''); set('rad_center', p[8]||''); set('rad_enemy', p[9]||''); set('rad_allied', p[10]||'');
+  set('rad_indicator', p[12]||''); set('rad_show', p[14]||''); set('rad_trans', p[16]||''); set('rad_top', p[17]||'');
+  set('rad_dist_mult', p[18]||''); set('rad_refresh', p[19]||''); set('rad_font', p[20]||'');
+})(at(9)||'');
+
+set('main_quick', at(10));
+(function(v){ const inv={'0x00000100':'REALTIME PRIORITY','0x00000080':'HIGH PRIORITY','0x00008000':'ABOVE NORMAL PRIORITY','0x00000020':'NORMAL PRIORITY','0x00000040':'IDLE PRIORITY','0x00004000':'BELOW NORMAL PRIORITY'}; set('main_priority', inv[v]||v||'UNSET'); })(at(11));
+
+(function(v){ const p=v.split('|'); set('con_w', p[0]||''); set('con_h', p[1]||''); set('con_font_size', p[2]||''); set('con_lines', p[3]||''); set('con_bg', p[4]||''); set('con_font_color', p[5]||''); set('con_x', p[6]||''); set('con_y', p[7]||''); set('con_trans', p[8]||''); })(at(12)||'');
+set('main_dpi', at(13));
+(function(v){ const p=v.split('|'); set('esp_bx', p[0]||''); set('esp_by', p[1]||''); set('esp_bw', p[2]||''); set('esp_bh', p[3]||''); set('esp_bd', p[4]||''); })(at(14)||'');
+(function(v){ const p=v.split('|'); set('esp_tx', p[0]||''); set('esp_ty', p[1]||''); })(at(15)||'');
+set('esp_th', at(17)); set('esp_char', (at(18)||'').slice(0,1));
+
+set('aim_keys', at(19));
+(function(v){ const p=v.split('|'); set('aim_xsens', p[0]||''); set('aim_ysens', p[1]||''); })(at(20)||'');
+set('aim_msmooth', at(21)); set('aim_maxdist_screen', at(22));
+set('aim_ycorr', at(24)); set('aim_xcorr', at(25));
+set('aim_ff', at(26));
+(function(v){ const p=v.split('|'); set('aim_toggle', p[0]||''); set('aim_keep', p[1]||''); })(at(27)||'');
+set('aim_minpred', at(28));
+(function(v){ const p=v.split('|'); set('aim_antirecoil', p[0]||''); set('aim_recoil_smooth', p[1]||''); set('aim_refresh', p[2]||''); })(at(29)||'');
+set('aim_recoil_adj', at(30)); set('aim_fire', at(31)); set('aim_pred_corr', at(32)); set('aim_maxdist', at(33)); set('aim_dist_type', at(34)); set('aim_switch_wait', at(35));
+(function(v){ const p=v.split('|'); set('aim_circle_color', p[0]||''); set('aim_circle_th', p[1]||''); })(at(36)||'');
+(function(v){ const p=v.split('|'); set('aim_yoff', p[0]||''); set('aim_xoff', p[1]||''); })(at(37)||'');
+set('aim_trig_press', at(38)); set('aim_trig', at(39));
+set('aim_not_visible', at(41));
+  }
+
+  // ----- Buttons -----
+  document.getElementById('btnExport').onclick=()=>{
+const text=buildLines().join('\r\n');
+const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'})); a.download='config.txt'; a.click(); URL.revokeObjectURL(a.href);
+toast('Exported config.txt');
+  };
+  document.getElementById('btnReset').onclick=()=>{ setDefaults(); toast('Reset to defaults'); };
+  document.getElementById('btnImport').onclick=()=>{
+const input=document.createElement('input'); input.type='file'; input.accept='.txt';
+input.onchange=async()=>{
+  const f=input.files&&input.files[0]; if(!f) return;
+  let t=await f.text();
+  t=t.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  if(/\\n/.test(t) && !/\n/.test(t)) t=t.replace(/\\r\\n/g,'\n').replace(/\\n/g,'\n');
+  const lines=t.split('\n');
+  applyLines(lines);
+  toast('Imported settings');
+};
+input.click();
+  };
+});
+</script>
+</body>
+</html>
