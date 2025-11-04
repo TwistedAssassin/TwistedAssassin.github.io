@@ -1,0 +1,246 @@
+:root {
+  --primary-baby-blue: #4cb5f5;
+  --primary-dark-blue: #1673b6;
+  --light-bg: #f8fbff;
+  --text-dark: #1f2933;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  color: var(--text-dark);
+  background-color: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.navbar-brand span {
+  color: var(--primary-baby-blue);
+  font-weight: 600;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+.nav-link.active {
+  color: var(--primary-dark-blue) !important;
+}
+
+/* Dropdown active item text should be black */
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #000000 !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--primary-baby-blue);
+  border-color: var(--primary-baby-blue);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--primary-dark-blue);
+  border-color: var(--primary-dark-blue);
+}
+
+/* Hero (home page) */
+.hero {
+  padding: 5rem 0 4rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e6f4ff 50%, #ffffff 100%);
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.badge-soft {
+  background-color: rgba(76, 181, 245, 0.1);
+  color: var(--primary-dark-blue);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Generic sections */
+.section-padding {
+  padding: 4rem 0;
+}
+
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: #6b7280;
+  max-width: 640px;
+}
+
+/* Background helpers */
+.bg-soft {
+  background-color: var(--light-bg);
+}
+
+/* Cards */
+.card {
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+/* Icon circle */
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(76, 181, 245, 0.12);
+  color: var(--primary-dark-blue);
+  margin-right: 0.5rem;
+}
+
+/* Check list */
+.list-check {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-check li {
+  margin-bottom: 0.35rem;
+}
+
+.list-check li::before {
+  content: "✓";
+  color: var(--primary-dark-blue);
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+/* Footer */
+.footer {
+  background-color: #0f172a;
+  color: #e5e7eb;
+  padding: 2.5rem 0 1.5rem;
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Content pages (non-home) */
+.page-header {
+  padding: 3.5rem 0 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e6f4ff 60%, #ffffff 100%);
+}
+
+.page-header h1 {
+  font-size: 2.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.breadcrumb {
+  --bs-breadcrumb-divider-color: #6b7280;
+  --bs-breadcrumb-item-active-color: #111827;
+}
+
+/* Team cards */
+.team-intro-quote {
+  border-left: 4px solid var(--primary-baby-blue);
+  padding-left: 1rem;
+  font-style: italic;
+  color: #4b5563;
+}
+
+.team-grid .card {
+  text-align: center;
+}
+
+.team-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.team-title {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Practice philosophy gallery */
+.philosophy-gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.philosophy-gallery .card {
+  border: none;
+  background: transparent;
+}
+
+/* Service cards with larger images and toggles */
+.service-card img.service-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.service-card .card-body {
+  padding-top: 1rem;
+}
+
+.service-card .btn-toggle {
+  font-size: 0.9rem;
+  padding: 0.35rem 0.75rem;
+}
+
+/* Map embeds */
+.map-embed {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+/* Responsive tweaks */
+@media (max-width: 767.98px) {
+  .hero {
+    padding-top: 4rem;
+  }
+}
