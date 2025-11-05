@@ -15,7 +15,7 @@
   width: 100%;
   height: auto;
 }
-
+.bi-facebook{color:#0d6efd}
 body {
   font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
@@ -248,4 +248,35 @@ body {
   .hero {
     padding-top: 4rem;
   }
+}
+
+/* Social button custom colors */
+.social-btn-instagram {
+  border-color: #e1306c !important;
+  color: #e1306c !important;
+}
+.social-btn-instagram:hover,
+.social-btn-instagram:focus {
+  background-color: #e1306c !important;
+  color: #ffffff !important;
+}
+
+.social-btn-yelp {
+  border-color: #d32323 !important;
+  color: #d32323 !important;
+}
+.social-btn-yelp:hover,
+.social-btn-yelp:focus {
+  background-color: #d32323 !important;
+  color: #ffffff !important;
+}
+
+.social-btn-google {
+  border-color: #34a853 !important;
+  color: #34a853 !important;
+}
+.social-btn-google:hover,
+.social-btn-google:focus {
+  background-color: #34a853 !important;
+  color: #ffffff !important;
 }
