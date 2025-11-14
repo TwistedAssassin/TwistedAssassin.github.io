@@ -44,10 +44,10 @@ email: alltwisteddesigns@gmail.com
 
 /*--------------------------Bumpers------------------------------------------*/
 .ds4 .bumper{width: 176px;height: 66px;opacity: 1;}
-.ds4 .bumper.left {background: url(lbumper.png);/* margin-top: 39px; *//* margin-left: 0px; */transform: none;float: left;}
-.ds4 .bumper.right {background: url(rbumper.png);/* margin-top: 39px; *//* margin-right: 50px; */transform: none;float: right;}
-.ds4 .bumper.left.pressed {background: url(lbumper2.png);}
-.ds4 .bumper.right.pressed {background: url(rbumper2.png);}
+.ds4 .bumper.left {background: url(lbumper2.png);/* margin-top: 39px; *//* margin-left: 0px; */transform: none;float: left;}
+.ds4 .bumper.right {background: url(rbumper2.png);/* margin-top: 39px; *//* margin-right: 50px; */transform: none;float: right;}
+.ds4 .bumper.left.pressed {background: url(lbumper.png);}
+.ds4 .bumper.right.pressed {background: url(rbumper.png);}
 .ds4 .bumpers { width: 538px;height: 23px;left: 109px; top: 132px;}
 
 /*-----------------------------Triggers------------------------------------------*/
@@ -55,10 +55,10 @@ email: alltwisteddesigns@gmail.com
 .ds4 .trigger.left,.ds4 .trigger.right{background:none;}
 .ds4 .trigger-button.left,.ds4 .trigger-button.right{width: 92px;height: 124px;opacity: 1;background-repeat:no-repeat;display: inline-block;}
 .ds4 .trigger-button.right {float:right;} 
-.ds4 .trigger-button.left {background: url(ltrigger.png);} 
-.ds4 .trigger-button.right {background: url(rtrigger.png);} 
-.ds4 .trigger-button.left.pressed {background: url(ltrigger2.png);} 
-.ds4 .trigger-button.right.pressed {background: url(rtrigger2.png);} 
+.ds4 .trigger-button.left {background: url(ltrigger2.png);} 
+.ds4 .trigger-button.right {background: url(rtrigger2.png);} 
+.ds4 .trigger-button.left.pressed {background: url(ltrigger.png);} 
+.ds4 .trigger-button.right.pressed {background: url(rtrigger.png);} 
 
 
 /*-------------------------Touch pad-----------------------------------------------*/
@@ -98,6 +98,7 @@ email: alltwisteddesigns@gmail.com
 .ds4 .meta.pressed {
     background: none;
 }
+
 
 
 
