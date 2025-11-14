@@ -75,15 +75,15 @@ email: alltwisteddesigns@gmail.com
 .ds4 .face.right {background: url(right.png);top: 70px;right: 11px;} */
 
 
-/*new style*/
+/*new style filter: hue-rotate(-67deg); */
 .ds4 .face.up {background: none;left: 26px; top: 28px;} 
 .ds4 .face.down {background: none;left: 26px;bottom: -30px;} 
 .ds4 .face.left {background: none;top: 70px;left: -17px;} 
 .ds4 .face.right {background: none;top: 70px;right: 11px;} 
-.ds4 .face.up.pressed {background: url(up.png);filter: hue-rotate(-67deg);} 
-.ds4 .face.down.pressed {background: url(down.png);filter: hue-rotate(-67deg);} 
-.ds4 .face.left.pressed {background: url(left.png);filter: hue-rotate(-67deg);} 
-.ds4 .face.right.pressed {background: url(right.png);filter: hue-rotate(-67deg);} 
+.ds4 .face.up.pressed {background: url(up.png);} 
+.ds4 .face.down.pressed {background: url(down.png);} 
+.ds4 .face.left.pressed {background: url(left.png);} 
+.ds4 .face.right.pressed {background: url(right.png);} 
 
 .ds4 .dpad {
     position: absolute;
@@ -98,6 +98,7 @@ email: alltwisteddesigns@gmail.com
 .ds4 .meta.pressed {
     background: none;
 }
+
 
 
 
