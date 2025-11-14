@@ -11,54 +11,54 @@ email: alltwisteddesigns@gmail.com
 */
 
 /*---------------------------Controller base-----------------------------------------*/
-.controller.ds4{background: url(alignment.png);width: 783px;height: 657px;margin-left: 0; margin-top: 0;} 
-.ds4.disconnected {background: url(diss.png);/*-webkit-filter: grayscale(1) invert(0);filter: grayscale(1) invert(0);*/opacity:0.7}
+.controller.ds4{background: url(base.png);width: 756px;height: 638px;margin-left: 0;margin-top: 0;} 
+.ds4.disconnected {background-repeat: no-repeat;background: url(diss.png);/*-webkit-filter: grayscale(1) invert(0);filter: grayscale(1) invert(0);*/opacity:0.7}
 /*-------------------------------Sticks----------------------------------------------*/
-.ds4 .sticks {width: 367px;height: 95px;left: 222px;top: 294px;}
-.ds4 .stick {background: url(stick.png);width: 92px;height: 89px;} 
-.ds4 .stick.pressed.left, .ds4 .stick.pressed.right {background: url(stick2.png);} 
-.ds4 .stick.right {top: 52px; left: 246px;}
+.ds4 .sticks {width: 367px;height: 102px;left: 142px;top: 190px;}
+.ds4 .stick {background: url(stick2.png);width: 92px;height: 89px;} 
+.ds4 .stick.pressed.left, .ds4 .stick.pressed.right {background: url(stick.png);} 
+.ds4 .stick.right {top: 163px;left: 289px;}
 .ds4 .stick.left {top: 52px;left: 0px;}
 
 
 /*---------------------a,b,x,y / X,circle,square,triangle----------------------=------*/
-.ds4 .abxy {top: 160px;left: 568px;}
+.ds4 .abxy {top: 167px;left: 504px;}
 .ds4 .button {width: 67px;height: 68px;background-repeat:no-repeat!important;} 
-.ds4 .a {background: url(x.png);left: 34px;top: 148px;}   /* A,X */
-.ds4 .b {background: url(circle.png);left: 91px;top: 90px;} /* B,Circle */
-.ds4 .x {background: url(square.png);left: -24px;top: 90px;} /* X,Square */
-.ds4 .y {background: url(tiangle.png);left: 34px;top: 32px;}  /* Y,Triangle */
-.ds4 .a.pressed {background: url(x2.png);} /* A,X */
-.ds4 .b.pressed {background: url(circle2.png);} /* B,Circle */
-.ds4 .x.pressed {background: url(square2.png);} /* X,Square */
-.ds4 .y.pressed {background: url(triangle2.png);} /* Y,Triangle */
+.ds4 .a {background: url(x2.png);left: 34px;top: 136px;}   /* A,X */
+.ds4 .b {background: url(circle2.png);left: 84px;top: 84px;} /* B,Circle */
+.ds4 .x {background: url(square2.png);left: -17px;top: 84px;} /* X,Square */
+.ds4 .y {background: url(triangle2.png);left: 34px;top: 32px;}  /* Y,Triangle */
+.ds4 .a.pressed {background: url(x.png);} /* A,X */
+.ds4 .b.pressed {background: url(circle.png);} /* B,Circle */
+.ds4 .x.pressed {background: url(square.png);} /* X,Square */
+.ds4 .y.pressed {background: url(tiangle.png);} /* Y,Triangle */
 
 
 /*--------------------------Start,Select------------------------------------------*/
-.ds4 .back, .ds4 .start {width: 26px;height: 38px;background-position: 0px,0px;opacity: 1;}
-.ds4 .start {background-image: url(start.png);margin-right: 25px;float: right;margin-top: 38px;} 
-.ds4 .back {background-image: url(select.png);margin-left: 1px;margin-top: 38px;}
- .ds4 .start.pressed {background-image: url(start2.png);} 
- .ds4 .back.pressed {background-image: url(select2.png);} 
+.ds4 .back, .ds4 .start {width: 34px;height: 35px;background-position: 0px,0px;opacity: 1;}
+.ds4 .start {background-image: url(start2.png);/* margin-right: 25px; */float: right;/* margin-top: 38px; */} 
+.ds4 .back {background-image: url(select2.png);/* margin-left: 1px; *//* margin-top: 125px; */float: left;}
+ .ds4 .start.pressed {background-image: url(start.png);} 
+ .ds4 .back.pressed {background-image: url(select.png);} 
 
 
 /*--------------------------Bumpers------------------------------------------*/
-.ds4 .bumper{width: 105px;height: 39px;opacity: 1;}
-.ds4 .bumper.left {background: url(lbumper.png);margin-top: 39px;margin-left: -13px;transform: none;}
-.ds4 .bumper.right {background: url(rbumper.png);margin-top: 39px;margin-right: 11px;transform: none;}
-.ds4 .bumper.left.pressed {background: url(lbumper2.png);}
-.ds4 .bumper.right.pressed {background: url(rbumper2.png);}
-
+.ds4 .bumper{width: 176px;height: 66px;opacity: 1;}
+.ds4 .bumper.left {background: url(lbumper2.png);/* margin-top: 39px; *//* margin-left: 0px; */transform: none;float: left;}
+.ds4 .bumper.right {background: url(rbumper2.png);/* margin-top: 39px; *//* margin-right: 50px; */transform: none;float: right;}
+.ds4 .bumper.left.pressed {background: url(lbumper.png);}
+.ds4 .bumper.right.pressed {background: url(rbumper.png);}
+.ds4 .bumpers { width: 538px;height: 23px;left: 109px; top: 132px;}
 
 /*-----------------------------Triggers------------------------------------------*/
-.ds4 .triggers {width: 762px;height: 90px;position: absolute;left: 10px;top: 1px;}
+.ds4 .triggers {width: 648px;height: 90px;position: absolute;left: 54px;top: 1px;}
 .ds4 .trigger.left,.ds4 .trigger.right{background:none;}
-.ds4 .trigger-button.left,.ds4 .trigger-button.right{width: 89px;height: 124px;opacity: 1;background-repeat:no-repeat;display: inline-block;}
+.ds4 .trigger-button.left,.ds4 .trigger-button.right{width: 92px;height: 124px;opacity: 1;background-repeat:no-repeat;display: inline-block;}
 .ds4 .trigger-button.right {float:right;} 
-.ds4 .trigger-button.left {background: url(ltrigger.png);} 
-.ds4 .trigger-button.right {background: url(rtrigger.png);} 
-.ds4 .trigger-button.left.pressed {background: url(ltrigger2.png);} 
-.ds4 .trigger-button.right.pressed {background: url(rtrigger2.png);} 
+.ds4 .trigger-button.left {background: url(ltrigger2.png);} 
+.ds4 .trigger-button.right {background: url(rtrigger2.png);} 
+.ds4 .trigger-button.left.pressed {background: url(ltrigger.png);} 
+.ds4 .trigger-button.right.pressed {background: url(rtrigger.png);} 
 
 
 /*-------------------------Touch pad-----------------------------------------------*/
@@ -66,15 +66,41 @@ email: alltwisteddesigns@gmail.com
 
 
 /*----------------------------D-Pad-----------------------------------------------*/
-.ds4 .arrows {left: 195px;top: 140px;width: 416px;height: 57px;} 
-.ds4 .face.up, .ds4 .face.down {width: 61px; height: 72px;} 
-.ds4 .face.left, .ds4 .face.right {width: 72px; height: 61px;} 
-.ds4 .face.up {background: url(up.png);left: 26px; top: 28px;} 
-.ds4 .face.down {background: url(down.png); left: 26px;bottom: -50px;} 
-.ds4 .face.left {background: url(left.png);top: 72px;left: -17px;} 
-.ds4 .face.right {background: url(right.png);top: 72px;right: -5px;} 
-.ds4 .face.up.pressed {background: url(up2.png);} 
-.ds4 .face.down.pressed {background: url(down2.png);} 
-.ds4 .face.left.pressed {background: url(left2.png);} 
-.ds4 .face.right.pressed {background: url(right2.png);} 
+.ds4 .arrows {left: 308px;top: 266px;width: 142px;height: 57px;} 
+.ds4 .face.up, .ds4 .face.down {width: 44px;height: 85px;} 
+.ds4 .face.left, .ds4 .face.right {width: 84px;height: 44px;} 
+/*.ds4 .face.up {background: url(up.png);left: 26px; top: 28px;} 
+.ds4 .face.down {background: url(down.png);left: 26px;bottom: -30px;} 
+.ds4 .face.left {background: url(left.png);top: 70px;left: -17px;} 
+.ds4 .face.right {background: url(right.png);top: 70px;right: 11px;} */
+
+
+/*new style*/
+.ds4 .face.up {background: none;left: 26px; top: 28px;} 
+.ds4 .face.down {background: none;left: 26px;bottom: -30px;} 
+.ds4 .face.left {background: none;top: 70px;left: -17px;} 
+.ds4 .face.right {background: none;top: 70px;right: 11px;} 
+.ds4 .face.up.pressed {background: url(up.png);filter: hue-rotate(-67deg);} 
+.ds4 .face.down.pressed {background: url(down.png);filter: hue-rotate(-67deg);} 
+.ds4 .face.left.pressed {background: url(left.png);filter: hue-rotate(-67deg);} 
+.ds4 .face.right.pressed {background: url(right.png);filter: hue-rotate(-67deg);} 
+
+.ds4 .dpad {
+    position: absolute;
+    width: 125px;
+    height: 126px;
+    top: 311px;
+    left: 234px;
+}
+
+
+/*----------------------------power button-----------------------------------------------*/
+.ds4 .meta.pressed {
+    background: none;
+}
+
+
+
+
+
 
