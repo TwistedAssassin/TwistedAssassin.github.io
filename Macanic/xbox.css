@@ -31,7 +31,7 @@ email: alltwisteddesigns@gmail.com
 .ds4 .a.pressed {background: url(x2.png);} /* A,X */
 .ds4 .b.pressed {background: url(circle2.png);} /* B,Circle */
 .ds4 .x.pressed {background: url(square2.png);} /* X,Square */
-.ds4 .y.pressed {background: url(tiangle2.png);} /* Y,Triangle */
+.ds4 .y.pressed {background: url(triangle2.png);} /* Y,Triangle */
 
 
 /*--------------------------Start,Select------------------------------------------*/
@@ -98,6 +98,7 @@ email: alltwisteddesigns@gmail.com
 .ds4 .meta.pressed {
     background: none;
 }
+
 
 
 
