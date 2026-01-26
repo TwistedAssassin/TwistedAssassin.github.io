@@ -899,10 +899,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function set(id,val){
       const el=document.getElementById(id);
       if(!el) return;
+
       if (el.type === 'checkbox'){
         el.checked = (val === '1' || val === 'true');
       } else {
         el.value = (val==null?'':String(val));
+      }
+
+      // IMPORTANT:
+      // Setting .value programmatically (imports / defaults) does not fire "input",
+      // so any picker syncing wired to oninput won't run. Sync here.
+      if (el.dataset && el.dataset.role === 'color-dec'){
+        const pickerId = el.dataset.picker;
+        const p = pickerId ? document.getElementById(pickerId) : null;
+        if (p && p.type === 'color'){
+          const iv = parseInt(el.value || '0', 10) || 0;
+          p.value = '#' + ('000000' + iv.toString(16)).slice(-6);
+        }
       }
     }
     setDefaults(); // clear to defaults
