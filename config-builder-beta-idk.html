@@ -618,7 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if(spec.type==='toggle'){
         el.checked=!!spec.def;
       }else if(spec.type==='select'){
-        el.value = spec.def ?? 'UNSET';
+        el.value = spec.def ?? '';
       }else if(spec.type==='colorDec'){
         const n=parseInt(spec.def||'0',10)||0; el.value=String(n);
         const p=document.getElementById(el.dataset.picker); if(p) p.value='#'+('000000'+n.toString(16)).slice(-6);
@@ -951,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if(p[6]){
         const map={'2':'Enemy','1':'All','0':'None'};
-        set('esp_show_players', map[p[6]]||'UNSET');
+        set('esp_show_players', map[p[6]]||'');
       }
       set('esp_refresh', p[8]||'');
       set('esp_font', p[9]||'');
@@ -990,7 +990,6 @@ document.addEventListener('DOMContentLoaded', () => {
     set('main_quick', at(10));
     (function(v){
       const inv={
-        '':'UNSET',
         '0x00000100':'REALTIME PRIORITY',
         '0x00000080':'HIGH PRIORITY',
         '0x00008000':'ABOVE NORMAL PRIORITY',
@@ -998,7 +997,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '0x00000040':'IDLE PRIORITY',
         '0x00004000':'BELOW NORMAL PRIORITY'
       };
-      set('main_priority', inv[v]||v||'UNSET');
+      set('main_priority', inv[v]||v||'');
     })(at(11));
 
     (function(v){
