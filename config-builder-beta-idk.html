@@ -826,14 +826,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // L8 ESP (respect esp_enabled)
     if (document.getElementById('esp_enabled').checked){
       L[7] = [
-        [gv('esp_entities'), gv('esp_edge_x'), gv('esp_edge_y'),gv('esp_font_size'),'1',
-        gv('esp_color_targetable'), gv('esp_color_untargetable'), gv('esp_color_allied'), gv('esp_color_bot'),
-        '1','1',
-        mapShow(gv('esp_show_players')),
-        '1',
-        gv('esp_refresh'),
-        gv('esp_font')
-      ].join('|');
+        gv('esp_entities'), gv('esp_edge_x'), gv('esp_edge_y'),gv('esp_font_size'),'1',gv('esp_color_targetable'), gv('esp_color_untargetable'), gv('esp_color_allied'), gv('esp_color_bot'),
+        '1','1',mapShow(gv('esp_show_players')),'1',gv('esp_refresh'),gv('esp_font')].join('|');
     } else {
       L[7] = ''; // disabled, leave line empty
     }
