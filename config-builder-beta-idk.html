@@ -818,7 +818,7 @@ document.addEventListener('DOMContentLoaded', () => {
     L[0] = gv('main_enable');
     L[1] = gv('main_cl');
     L[2] = gv('main_driver');
-    L[3] = '0';
+    L[3] = '';
     L[4] = gv('main_macrofiles');
     L[5] = gv('main_automacros');
     L[6] = gv('main_clkey');
@@ -990,6 +990,7 @@ document.addEventListener('DOMContentLoaded', () => {
     set('main_quick', at(10));
     (function(v){
       const inv={
+        '':'UNSET',
         '0x00000100':'REALTIME PRIORITY',
         '0x00000080':'HIGH PRIORITY',
         '0x00008000':'ABOVE NORMAL PRIORITY',
