@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aim_ysens: 'Line 20 – Saved Y sensitivity from -calibrate.Do NOT input a random number here, or the aimbot will not work. Use the numbers outputted by the -calibrate command (or leave it blank).\n\n<div class="info-example"><span class="info-example-label">Example:</span> 5.0|<span class="info-example-highlight">5.0</span></div>',
     
 	aim_msmooth: 'Line 21 – slows down the aimbot so it doesn\'t aim immediately at the correct location. 0 disables smoothing (default). Anything above 1 will act as a divisor for cursor distance. For example, if the cursor needs to move 100 pixels, a mouse smoothing value of 2 will cause the mouse to travel 50 pixels initially, then 25, then 12, etc.\n\n<div class="info-example"><span class="info-example-label">Example:</span> <span class="info-example-highlight">5</span>|1</div>',
-    aim_msmoothvar: 'To obtain the randomized smoothness, Speeder subtracts and adds the variance from/to the smoothness, with a precision of two decimal places. Thus, 5|1 results in a possible smoothing between 4.00 and 6.00. The default smoothing is 5. The default smoothing variance is 1. Speeder will default to 5|1. \n\n<div class="info-example"><span class="info-example-label">Example:</span>5|<span class="info-example-highlight">1</span></div>',
+    aim_msmoothvar: 'Line 21 – To obtain the randomized smoothness, Speeder subtracts and adds the variance from/to the smoothness, with a precision of two decimal places. Thus, 5|1 results in a possible smoothing between 4.00 and 6.00. The default smoothing is 5. The default smoothing variance is 1. Speeder will default to 5|1. \n\n<div class="info-example"><span class="info-example-label">Example:</span>5|<span class="info-example-highlight">1</span></div>',
 	
 	aim_maxdist_screen: 'Line 22 – Max screen distance from the center of the game window for targets to be considered viable for the aimbot. This is often referred to as the aimbot "field of view." If you have the ESP enabled, you will see a circle in the center of the window. This is the aimbot field of view. I suggest starting with 100 and adjusting as needed.',
     aim_ignore_y: 'Line 23 –  If 1, Speeder will not target along the Y-axis. This allows you to manually aim up and down while Speeder maintains perfect X-axis alignment.',
@@ -856,27 +856,27 @@ document.addEventListener('DOMContentLoaded', () => {
     L[18] = gv('aim_keys');
     L[19] = [gv('aim_xsens'), gv('aim_ysens')].join('|');
     L[20] = gv('aim_msmooth');
-    L[20] = gv('aim_msmoothvar');
-    L[21] = gv('aim_maxdist_screen');
-    L[22] = gv('aim_ignore_y');
-    L[23] = gv('aim_ycorr');
-    L[24] = gv('aim_xcorr');
-    L[25] = gv('aim_ff');
-    L[26] = [gv('aim_toggle'), gv('aim_keep')].join('|');
-    L[27] = gv('aim_minpred');
-    L[28] = [gv('aim_antirecoil'), gv('aim_recoil_smooth'), gv('aim_refresh')].join('|');
-    L[29] = gv('aim_recoil_adj');
-    L[30] = gv('aim_fire');
-    L[31] = gv('aim_pred_corr');
-    L[32] = gv('aim_maxdist');
-    L[33] = ({'Center Screen':'1','From Player':'2'}[gv('aim_dist_type')] || gv('aim_dist_type') || '');
-    L[34] = gv('aim_switch_wait');
-    L[35] = [gv('aim_circle_color'), gv('aim_circle_th')].join('|');
-    L[36] = [gv('aim_yoff'), gv('aim_xoff')].join('|');
-    L[37] = gv('aim_trig');
-    L[38] = gv('aim_trig_press');
-    L[39] = gv('aim_fire');
-    L[40] = gv('aim_not_visible');
+    L[21] = gv('aim_msmoothvar');
+    L[22] = gv('aim_maxdist_screen');
+    L[23] = gv('aim_ignore_y');
+    L[24] = gv('aim_ycorr');
+    L[25] = gv('aim_xcorr');
+    L[26] = gv('aim_ff');
+    L[27] = [gv('aim_toggle'), gv('aim_keep')].join('|');
+    L[28] = gv('aim_minpred');
+    L[29] = [gv('aim_antirecoil'), gv('aim_recoil_smooth'), gv('aim_refresh')].join('|');
+    L[30] = gv('aim_recoil_adj');
+    L[31] = gv('aim_fire');
+    L[32] = gv('aim_pred_corr');
+    L[33] = gv('aim_maxdist');
+    L[34] = ({'Center Screen':'1','From Player':'2'}[gv('aim_dist_type')] || gv('aim_dist_type') || '');
+    L[35] = gv('aim_switch_wait');
+    L[36] = [gv('aim_circle_color'), gv('aim_circle_th')].join('|');
+    L[37] = [gv('aim_yoff'), gv('aim_xoff')].join('|');
+    L[38] = gv('aim_trig');
+    L[39] = gv('aim_trig_press');
+    L[40] = gv('aim_fire');
+    L[41] = gv('aim_not_visible');
 
     return L;
   }
