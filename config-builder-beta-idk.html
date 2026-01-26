@@ -855,7 +855,7 @@ document.addEventListener('DOMContentLoaded', () => {
     L[17] = (gv('esp_char')||'').slice(0,1);
     L[18] = gv('aim_keys');
     L[19] = [gv('aim_xsens'), gv('aim_ysens')].join('|');
-    L[20] = [gv('aim_msmooth'),gv('aim_msmoothvar')].join('|');
+    L[20] = [gv('aim_msmooth'), gv('aim_msmoothvar')].join('|');
     L[21] = gv('aim_maxdist_screen');
     L[22] = gv('aim_ignore_y');
     L[23] = gv('aim_ycorr');
@@ -1018,6 +1018,7 @@ document.addEventListener('DOMContentLoaded', () => {
       set('aim_msmooth', p[0]||'');
       set('aim_msmoothvar', p[1]||'');
     })(at(21)||'');
+	
     set('aim_maxdist_screen', at(22));
     set('aim_ignore_y', at(23));
     set('aim_ycorr', at(24));
