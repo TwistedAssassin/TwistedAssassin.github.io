@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fancy Name Scroll</title>
+
+<style>
+html, body{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    overflow:hidden;
+    background:#0a0a0a;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+/* container that always fills whatever space it is placed in */
+.wrapper{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* scrolling list */
+.scroll{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    animation:scrollUp 35s linear infinite;
+}
+
+/* name styling */
+.name{
+    font-size:6vh; /* responsive text size */
+    font-weight:bold;
+    margin:1vh 0;
+    padding:0.5vh 2vh;
+    border-radius:20px;
+    background:linear-gradient(90deg,#ff00ff,#00ffff,#ff00ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 10px rgba(255,255,255,0.6);
+}
+
+/* animation */
+@keyframes scrollUp{
+    0%{transform:translateY(100%);}
+    100%{transform:translateY(-100%);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+<div class="scroll">
+
+<div class="name">✨ SYLVIE ✨</div>
+<div class="name">🌌 GALAXY KHALEESI 🌠</div>
+<div class="name">🍒 CHERRY COLA 🥤</div>
+<div class="name">🔪 LIL BIT STABBY 😈</div>
+<div class="name">🛡️ JAY THE MF VIKING ⚔️</div>
+<div class="name">👋 SLAPPA 💥</div>
+<div class="name">🎤 MRS VOX 🔊</div>
+<div class="name">🔥 KANE 🔥</div>
+<div class="name">🎉 JUBILEE 2 YEARS 🥳</div>
+<div class="name">🅣 THE LETTER T 1 YEAR 🎊</div>
+<div class="name">⭐ JDUB 1 YEAR ⭐</div>
+<div class="name">🌸 JENNAY 🌸</div>
+<div class="name">🎮 JAMIE711 🕹️</div>
+<div class="name">🚛 Trucker P 🛣️</div>
+<div class="name">🍗 NUGGIES 🤤</div>
+<div class="name">💎 UNFUMBLABLE 💎</div>
+<div class="name">🧙‍♂️ JEDI ⚡</div>
+
+</div>
+</div>
+
+</body>
+</html>
