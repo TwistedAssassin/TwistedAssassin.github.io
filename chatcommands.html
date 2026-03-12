@@ -1,1 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot Commands</title>
 
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#050505;
+color:white;
+}
+
+header{
+background:linear-gradient(90deg,#ff0000,#700000);
+padding:20px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.search{
+text-align:center;
+padding:15px;
+}
+
+.search input{
+width:90%;
+max-width:420px;
+padding:12px;
+border-radius:8px;
+border:none;
+background:#151515;
+color:white;
+font-size:16px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:15px;
+}
+
+.category{
+margin-top:35px;
+}
+
+.category h2{
+color:#ff4d4d;
+border-bottom:2px solid #ff0000;
+padding-bottom:6px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px;
+margin-top:12px;
+}
+
+.card{
+background:#111;
+border:1px solid #8b0000;
+border-radius:10px;
+padding:12px;
+}
+
+.card:hover{
+border-color:#ff0000;
+box-shadow:0 0 10px rgba(255,0,0,.4);
+}
+
+.cmd{
+font-weight:bold;
+font-size:17px;
+color:#ff5555;
+}
+
+.usage{
+font-size:13px;
+color:#aaa;
+margin-top:5px;
+}
+
+.desc{
+font-size:14px;
+margin-top:6px;
+}
+
+button{
+margin-top:8px;
+background:#8b0000;
+border:none;
+color:white;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff0000;
+}
+
+footer{
+text-align:center;
+padding:30px;
+opacity:.5;
+font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>🔥 Stream Bot Commands</header>
+
+<div class="search">
+<input id="search" placeholder="Search commands...">
+</div>
+
+<div id="content" class="container"></div>
+
+<footer>Bot Command Guide</footer>
+
+<script>
+
+const commands=[
+
+{cat:"❓ Random Questions",name:"/truth",usage:"/truth",desc:"Random truth question."},
+{cat:"❓ Random Questions",name:"/dare",usage:"/dare",desc:"Random dare question."},
+{cat:"❓ Random Questions",name:"/wyr",usage:"/wyr",desc:"Would You Rather question.."},
+{cat:"❓ Random Questions",name:"/nhie",usage:"/nhie",desc:"Never Have I Ever question."},
+{cat:"❓ Random Questions",name:"/paranoia",usage:"/paranoia",desc:"Random Paranoia question."},
+
+
+{cat:"🎲 Random",name:"/dice",usage:"/dice",desc:"Rolls a number between 1-6."},
+{cat:"🎲 Random",name:"/rnd",usage:"/rnd MIN MAX",desc:"Generate random number between two values."},
+{cat:"🎲 Random",name:"/card",usage:"/card",desc:"Draw a random playing card."},
+{cat:"🎲 Random",name:"/fortune",usage:"/fortune",desc:"Displays a fortune message."},
+{cat:"🎲 Random",name:"/rndtopic",usage:"/rndtopic",desc:"Generate a random topic."},
+{cat:"🎲 Random",name:"/dj",usage:"/dj",desc:"Generate a random dad joke."},
+{cat:"🎲 Random",name:"/joke",usage:"/joke",desc:"Generate a random joke."},
+{cat:"🎲 Random",name:"/advice",usage:"/advice",desc:"Generate random advice."},
+
+{cat:"⚔️ Combat",name:"/fight",usage:"/fight USER",desc:"Fight another user with random damage."},
+{cat:"⚔️ Combat",name:"/attack",usage:"/attack USER",desc:"Perform an attack."},
+{cat:"⚔️ Combat",name:"/punch",usage:"/punch USER",desc:"Punch another user."},
+{cat:"⚔️ Combat",name:"/slap",usage:"/slap USER",desc:"Slap another user."},
+{cat:"⚔️ Combat",name:"/throw",usage:"/throw USER",desc:"Throw something at someone."},
+{cat:"⚔️ Combat",name:"/boop",usage:"/boop USER",desc:"Boop another user."},
+{cat:"⚔️ Combat",name:"/curse",usage:"/curse USER",desc:"Curse another user."},
+
+{cat:"❤️ Relationships",name:"/love",usage:"/love USER",desc:"Check love compatibility."},
+{cat:"❤️ Relationships",name:"/marry",usage:"/marry USER",desc:"Propose marriage."},
+{cat:"❤️ Relationships",name:"/date",usage:"/date USER",desc:"Ask someone on a date."},
+{cat:"❤️ Relationships",name:"/kiss",usage:"/kiss USER",desc:"Send a kiss."},
+{cat:"❤️ Relationships",name:"/hug",usage:"/hug USER",desc:"Give a hug."},
+{cat:"❤️ Relationships",name:"/flirt",usage:"/flirt USER",desc:"Flirt with someone."},
+{cat:"❤️ Relationships",name:"/breakup",usage:"/breakup USER",desc:"Break up with someone."},
+{cat:"❤️ Relationships",name:"/divorce",usage:"/divorce USER",desc:"Divorce someone."},
+{cat:"❤️ Relationships",name:"/cheat",usage:"/cheat USER",desc:"Accuse someone of cheating."},
+
+{cat:"😈 Troll",name:"/troll",usage:"/troll USER",desc:"Send a troll message."},
+{cat:"😈 Troll",name:"/insult",usage:"/insult USER",desc:"Random insult generator."},
+{cat:"😈 Troll",name:"/roast",usage:"/roast USER",desc:"Roast another user."},
+{cat:"😈 Troll",name:"/blackmail",usage:"/blackmail USER",desc:"Fake blackmail message."},
+{cat:"😈 Troll",name:"/shit",usage:"/shit USER",desc:"Random chaos insult response."},
+
+{cat:"🎮 Games",name:"/challenge",usage:"/challenge",desc:"Generate random challenge for fortnite."},
+{cat:"🎮 Games",name:"/rps",usage:"/rps",desc:"Play rock paper scissors."},
+{cat:"🎮 Games",name:"/sus",usage:"/sus USER",desc:"Check suspicion level."},
+{cat:"🎮 Games",name:"/likely",usage:"/likely USER",desc:"Show likelihood someone does something."},
+{cat:"🎮 Games",name:"Blackjack",usage:"!bj - !hit - !stand",desc:"!bj to start a hand, !hit to hit, !stand to stand."},
+{cat:"🎮 Games",name:"Slots",usage:"!slots or !spin",desc:"Spin Slots."},
+{cat:"🎮 Games",name:"chat Battle",usage:"/battle ",desc:"battle someone in chat"},
+
+{cat:"🧠 Trivia",name:"/trivia start",usage:"/trivia start",desc:"Start a new trivia game"},
+{cat:"🧠 Trivia",name:"/trivia stop",usage:"/trivia stop",desc:"End game and post final scores"},
+{cat:"🧠 Trivia",name:"/trivia skip",usage:"/trivia skip",desc:"Skip current question, reveal answer"},
+{cat:"🧠 Trivia",name:"/trivia score",usage:"/trivia score",desc:"Post current leaderboard"},
+{cat:"🧠 Trivia",name:"/trivia clear",usage:"/trivia clear",desc:"Reset all scores"},
+{cat:"🧠 Trivia",name:"/pause",usage:"/pause",desc:"Pause / resume current game"},
+
+
+{cat:"❤️ Life Tracker",name:"/life",usage:"/life USER +point/-point",desc:"add or remove lives from user example: /life Tom +1"},
+{cat:"❤️ Life Tracker",name:"/life reset",usage:"/life USER reset",desc:"Reset users lives back to default"},
+{cat:"❤️ Life Tracker",name:"/count reset",usage:"/count reset",desc:"Resets everyone lives back to default"},
+{cat:"❤️ Life Tracker",name:"/count",usage:"/count",desc:"Shows current users lives"},
+
+{cat:"🎭 Personality",name:"/type",usage:"/type USER",desc:"Describe someone's personality."},
+{cat:"🎭 Personality",name:"/vibecheck",usage:"/vibecheck USER",desc:"Check someone's vibe."},
+{cat:"🎭 Personality",name:"/iq",usage:"/iq USER",desc:"Random IQ score."},
+{cat:"🎭 Personality",name:"/short",usage:"/short USER",desc:"Random height joke."},
+{cat:"🎭 Personality",name:"/jelly",usage:"/jelly USER",desc:"Check jealousy level."},
+{cat:"🎭 Personality",name:"/criminal",usage:"/criminal USER",desc:"Random crime accusation."},
+{cat:"🎭 Personality",name:"/highcheck",usage:"/highcheck USER",desc:"Check if someone is high."},
+{cat:"🎭 Personality",name:"/smp",usage:"/smp",desc:"Stream related command."},
+{cat:"🎭 Personality",name:"/comp",usage:"/comp USER1 USER2",desc:"Check compatibility."},
+
+{cat:"💰 Society",name:"/steal",usage:"/steal USER",desc:"Steal from another user."},
+{cat:"💰 Society",name:"/loot",usage:"/loot USER",desc:"Loot something from someone."},
+{cat:"💰 Society",name:"/gift",usage:"/gift USER",desc:"Give a gift."},
+{cat:"💰 Society",name:"/sell",usage:"/sell ITEM",desc:"Sell an item."},
+{cat:"💰 Society",name:"/refund",usage:"/refund ITEM",desc:"Refund something."},
+{cat:"💰 Society",name:"/bounty",usage:"/bounty USER",desc:"Place bounty on someone."},
+{cat:"💰 Society",name:"/bribe",usage:"/bribe USER",desc:"Bribe someone."},
+{cat:"💰 Society",name:"/pimp",usage:"/pimp USER",desc:"Random pimps user joke."},
+{cat:"💰 Society",name:"/jail",usage:"/jail USER",desc:"Send someone to jail."},
+{cat:"💰 Society",name:"/court",usage:"/court USER",desc:"Court someone."},
+{cat:"💰 Society",name:"/expose",usage:"/expose USER",desc:"Expose someone jokingly."},
+
+{cat:"🚔 Fake Moderation",name:"/kick",usage:"/kick USER",desc:"Fake kick message."},
+{cat:"🚔 Fake Moderation",name:"/mute",usage:"/mute USER",desc:"Fake mute message."},
+{cat:"🚔 Fake Moderation",name:"/unmute",usage:"/unmute USER",desc:"Fake unmute message."},
+{cat:"🚔 Fake Moderation",name:"/interrogate",usage:"/interrogate USER",desc:"Interrogate someone."},
+{cat:"🚔 Fake Moderation",name:"/report",usage:"/report USER",desc:"Fake report message."},
+
+{cat:"🎵 Stream",name:"/song",usage:"/song",desc:"Suggest a random song."},
+{cat:"🎵 Stream",name:"/flow",usage:"/flow",desc:"Generate rap flow Emoji."},
+{cat:"🎵 Stream",name:"/dance",usage:"/dance",desc:"Dance animation."},
+{cat:"🎵 Stream",name:"/millidance",usage:"/millidance",desc:"Emoji dance animation."},
+{cat:"🎵 Stream",name:"/sendjet",usage:"/sendjet",desc:"Send jet gift command."},
+{cat:"🎵 Stream",name:"/review",usage:"/review",desc:"Random review response."},
+{cat:"🎵 Stream",name:"/complain",usage:"/complain",desc:"Random complaint message."},
+{cat:"🎵 Stream",name:"/compliment",usage:"/compliment USER",desc:"Compliment someone."},
+
+
+{cat:"➕ Other",name:"/define",usage:"/define Word",desc:"will define common words"},
+{cat:"➕ Other",name:"/convert",usage:"/convert Text",desc:"Convert text to fancy text"},
+{cat:"➕ Other",name:"/math",usage:"/math 2+2",desc:"Will solve a math problem for you"},
+
+
+
+{cat:"💪 Bouncers Only",name:"/welcome on",usage:"/welcome on",desc:"Turns on Welcome Msg's for joining users."},
+{cat:"💪 Bouncers Only",name:"/welcome off",usage:"/welcome off",desc:"Turns off Welcome Msg's for joining users."},
+
+];
+
+function render(){
+
+const container=document.getElementById("content");
+container.innerHTML="";
+
+const grouped={};
+
+commands.forEach(c=>{
+if(!grouped[c.cat]) grouped[c.cat]=[];
+grouped[c.cat].push(c);
+});
+
+for(let cat in grouped){
+
+let section=document.createElement("div");
+section.className="category";
+
+section.innerHTML=`<h2>${cat}</h2><div class="grid"></div>`;
+
+let grid=section.querySelector(".grid");
+
+grouped[cat].forEach(cmd=>{
+
+let card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<div class="cmd">${cmd.name}</div>
+<div class="usage">${cmd.usage}</div>
+<div class="desc">${cmd.desc}</div>
+<button onclick="copy('${cmd.name}')">Copy</button>
+`;
+
+grid.appendChild(card);
+
+});
+
+container.appendChild(section);
+
+}
+
+}
+
+render();
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let val=this.value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(val)?"block":"none";
+});
+
+});
+
+function copy(cmd){
+navigator.clipboard.writeText(cmd);
+alert("Copied: "+cmd);
+}
+
+</script>
+
+</body>
+</html>
